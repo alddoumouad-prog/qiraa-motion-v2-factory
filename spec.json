@@ -1,0 +1,99 @@
+{
+  "project_id": "space-voting-gold",
+  "source_url": "https://x.com/astro_anil/status/2117625618200219782",
+  "source_offset_seconds": 0,
+  "source_credit": "X / @astro_anil",
+  "location": "محطة الفضاء الدولية",
+  "date": "03.11.2026",
+  "headline_lines": [
+    "صوّتوا من الفضاء",
+    "ثلاثة رواد أمريكيين",
+    "كيف وصلت أصواتهم؟"
+  ],
+  "cards": [
+    {
+      "kicker": "الاقتراع",
+      "value": "إلكتروني وآمن",
+      "sub": "إلى مسؤولي الانتخابات على الأرض",
+      "start": 7.65,
+      "end": 11.0
+    },
+    {
+      "kicker": "الارتفاع",
+      "value": "≈ 400 كم",
+      "sub": "فوق الأرض",
+      "start": 11.0,
+      "end": 14.0
+    },
+    {
+      "kicker": "البداية",
+      "value": "منذ 1997",
+      "sub": "ناسا مكّنت روادها من التصويت",
+      "start": 14.05,
+      "end": 18.3
+    },
+    {
+      "kicker": "الخلاصة",
+      "value": "المشاركة حتى من الفضاء",
+      "sub": "تجربة مدنية خارج الكوكب",
+      "start": 18.3,
+      "end": 21.3
+    }
+  ],
+  "narration": [
+    {
+      "id": "a",
+      "text": "ثلاثة رواد أمريكيين صوّتوا من محطة الفضاء الدولية.",
+      "start": 0.55,
+      "max_seconds": 4.75,
+      "audio_file": "examples/space/audio/narration_a.mp3"
+    },
+    {
+      "id": "b",
+      "text": "مينون يشرح أن الاقتراع أُرسل إلكترونيًا وبأمان إلى مسؤولي الانتخابات.",
+      "start": 7.65,
+      "max_seconds": 6.2,
+      "audio_file": "examples/space/audio/narration_b2.mp3"
+    },
+    {
+      "id": "c",
+      "text": "على ارتفاع أربعمئة كيلومتر، تتواصل تجربة بدأتها ناسا عام ألف وتسعمئة وسبعة وتسعين.",
+      "start": 14.05,
+      "max_seconds": 7.15,
+      "audio_file": "examples/space/audio/narration_c2.mp3",
+      "tempo": 1.1650352113
+    }
+  ],
+  "micro": [
+    {
+      "id": "micro_01",
+      "text": "تجربة عملية.. أم رمزية؟",
+      "start": 5.54,
+      "max_seconds": 1.95,
+      "anchor_word": "vote",
+      "anchor_end": 5.54,
+      "audio_file": "examples/space/audio/micro_01.mp3",
+      "tempo": 1.38
+    },
+    {
+      "id": "micro_02",
+      "text": "مستقبل قريب.. أم استثناء؟",
+      "start": 21.5,
+      "max_seconds": 1.95,
+      "anchor_word": "today",
+      "anchor_end": 21.5,
+      "audio_file": "examples/space/audio/micro_02.mp3",
+      "tempo": 1.52
+    }
+  ],
+  "tts": {
+    "provider": "pre_recorded",
+    "fallback_voice": "ar-MA-JamalNeural"
+  },
+  "editorial_review": {
+    "facts_verified": true,
+    "source_permission_confirmed": false,
+    "notes": "مثال تاريخي؛ أكّد حقوق استخدام المصدر قبل النشر."
+  },
+  "transcript_file": "examples/space/transcript_words.json"
+}

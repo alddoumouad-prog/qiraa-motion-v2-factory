@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/qiraa-motion-v2/spec.schema.json",
+  "title": "Qiraa Motion V2 project specification",
+  "type": "object",
+  "required": ["project_id", "source_url", "source_offset_seconds", "source_credit", "location", "date", "headline_lines", "cards", "narration", "micro", "tts", "editorial_review", "transcript_file"],
+  "properties": {
+    "project_id": {"type":"string", "pattern":"^[a-z0-9][a-z0-9_-]{1,63}$"},
+    "source_url": {"type":"string", "pattern":"^https?://"},
+    "source_offset_seconds": {"type":"number", "minimum":0, "maximum":86400},
+    "source_credit": {"type":"string", "minLength":1, "maxLength":90},
+    "location": {"type":"string", "minLength":1, "maxLength":90},
+    "date": {"type":"string", "pattern":"^[0-9]{2}\\.[0-9]{2}\\.[0-9]{4}$"},
+    "headline_lines": {"type":"array", "minItems":3, "maxItems":3, "items":{"type":"string", "minLength":1, "maxLength":48}},
+    "cards": {"type":"array", "minItems":4, "maxItems":4, "items":{"$ref":"#/$defs/card"}},
+    "narration": {"type":"array", "minItems":3, "maxItems":3, "items":{"$ref":"#/$defs/narration"}},
+    "micro": {"type":"array", "minItems":2, "maxItems":2, "items":{"$ref":"#/$defs/micro"}},
+    "transcript_file": {"type":"string", "minLength":1},
+    "tts": {"type":"object", "required":["provider"], "properties":{"provider":{"enum":["pre_recorded","edge"]}, "fallback_voice":{"type":"string"}}},
+    "editorial_review": {"type":"object", "required":["facts_verified","source_permission_confirmed"], "properties":{"facts_verified":{"type":"boolean"}, "source_permission_confirmed":{"type":"boolean"}, "notes":{"type":"string"}}}
+  },
+  "$defs": {
+    "card": {"type":"object", "required":["kicker","value","start","end"], "properties":{"kicker":{"type":"string","minLength":1,"maxLength":75},"value":{"type":"string","minLength":1,"maxLength":75},"sub":{"type":"string","maxLength":75},"start":{"type":"number","minimum":5.22},"end":{"type":"number","maximum":23.5}}},
+    "clip": {"type":"object", "required":["id","text","start","max_seconds"], "properties":{"id":{"type":"string","pattern":"^[a-z0-9_-]{1,48}$"},"text":{"type":"string","minLength":1,"maxLength":220},"start":{"type":"number","minimum":0},"max_seconds":{"type":"number","exclusiveMinimum":0},"audio_file":{"type":"string","minLength":1},"tempo":{"type":"number","minimum":1,"maximum":1.6}}},
+    "narration": {"$ref":"#/$defs/clip"},
+    "micro": {"allOf":[{"$ref":"#/$defs/clip"},{"type":"object","required":["anchor_word","anchor_end"],"properties":{"text":{"type":"string","maxLength":45},"start":{"type":"number","minimum":5.25,"maximum":21.5},"max_seconds":{"type":"number","exclusiveMaximum":2},"anchor_word":{"type":"string","minLength":1},"anchor_end":{"type":"number","minimum":0}}}]}
+  }
+}

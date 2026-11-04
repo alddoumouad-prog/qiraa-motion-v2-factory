@@ -1,0 +1,44 @@
+name: Transcribe source for Motion V2
+
+on:
+  workflow_dispatch:
+    inputs:
+      source_url:
+        description: 'Public source video URL (never include credentials)'
+        required: true
+        type: string
+      language:
+        description: 'Optional Whisper language code, such as en or ar; blank = auto'
+        required: false
+        type: string
+        default: ''
+
+permissions:
+  contents: read
+
+jobs:
+  transcribe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: pip
+          cache-dependency-path: |
+            requirements.txt
+            requirements-transcription.txt
+      - name: Install dependencies
+        run: python -m pip install -r requirements.txt -r requirements-transcription.txt
+      - name: Download and transcribe without uploading source video
+        env:
+          SOURCE_URL: ${{ inputs.source_url }}
+          LANGUAGE: ${{ inputs.language }}
+        run: python factory/transcribe_url.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: qiraa-word-transcript
+          path: transcript_output/
+          if-no-files-found: error
+          retention-days: 7

@@ -1,0 +1,352 @@
+[
+  {
+    "start": 0.14,
+    "end": 5.54,
+    "text": "Welcome to space station where today we have the privilege of being able to vote",
+    "words": [
+      {
+        "start": 0.14,
+        "end": 0.78,
+        "word": " Welcome"
+      },
+      {
+        "start": 0.78,
+        "end": 0.94,
+        "word": " to"
+      },
+      {
+        "start": 0.94,
+        "end": 1.24,
+        "word": " space"
+      },
+      {
+        "start": 1.24,
+        "end": 1.86,
+        "word": " station"
+      },
+      {
+        "start": 1.86,
+        "end": 2.28,
+        "word": " where"
+      },
+      {
+        "start": 2.28,
+        "end": 2.92,
+        "word": " today"
+      },
+      {
+        "start": 2.92,
+        "end": 3.32,
+        "word": " we"
+      },
+      {
+        "start": 3.32,
+        "end": 3.54,
+        "word": " have"
+      },
+      {
+        "start": 3.54,
+        "end": 3.74,
+        "word": " the"
+      },
+      {
+        "start": 3.74,
+        "end": 4.18,
+        "word": " privilege"
+      },
+      {
+        "start": 4.18,
+        "end": 4.52,
+        "word": " of"
+      },
+      {
+        "start": 4.52,
+        "end": 4.82,
+        "word": " being"
+      },
+      {
+        "start": 4.82,
+        "end": 5.02,
+        "word": " able"
+      },
+      {
+        "start": 5.02,
+        "end": 5.28,
+        "word": " to"
+      },
+      {
+        "start": 5.28,
+        "end": 5.54,
+        "word": " vote"
+      }
+    ]
+  },
+  {
+    "start": 6.18,
+    "end": 8.82,
+    "text": "Here as well, just like you on the ground",
+    "words": [
+      {
+        "start": 6.18,
+        "end": 6.62,
+        "word": " Here"
+      },
+      {
+        "start": 6.62,
+        "end": 6.88,
+        "word": " as"
+      },
+      {
+        "start": 6.88,
+        "end": 7.16,
+        "word": " well,"
+      },
+      {
+        "start": 7.16,
+        "end": 7.56,
+        "word": " just"
+      },
+      {
+        "start": 7.56,
+        "end": 7.84,
+        "word": " like"
+      },
+      {
+        "start": 7.84,
+        "end": 8.12,
+        "word": " you"
+      },
+      {
+        "start": 8.12,
+        "end": 8.38,
+        "word": " on"
+      },
+      {
+        "start": 8.38,
+        "end": 8.54,
+        "word": " the"
+      },
+      {
+        "start": 8.54,
+        "end": 8.82,
+        "word": " ground"
+      }
+    ]
+  },
+  {
+    "start": 8.82,
+    "end": 14.86,
+    "text": "This is my room that doubles as a voting booth or me inside of it is",
+    "words": [
+      {
+        "start": 8.82,
+        "end": 9.38,
+        "word": " This"
+      },
+      {
+        "start": 9.38,
+        "end": 9.54,
+        "word": " is"
+      },
+      {
+        "start": 9.54,
+        "end": 9.72,
+        "word": " my"
+      },
+      {
+        "start": 9.72,
+        "end": 10.08,
+        "word": " room"
+      },
+      {
+        "start": 10.08,
+        "end": 10.5,
+        "word": " that"
+      },
+      {
+        "start": 10.5,
+        "end": 10.88,
+        "word": " doubles"
+      },
+      {
+        "start": 10.88,
+        "end": 11.24,
+        "word": " as"
+      },
+      {
+        "start": 11.24,
+        "end": 11.58,
+        "word": " a"
+      },
+      {
+        "start": 11.58,
+        "end": 11.92,
+        "word": " voting"
+      },
+      {
+        "start": 11.92,
+        "end": 12.3,
+        "word": " booth"
+      },
+      {
+        "start": 12.3,
+        "end": 12.96,
+        "word": " or"
+      },
+      {
+        "start": 12.96,
+        "end": 13.12,
+        "word": " me"
+      },
+      {
+        "start": 13.12,
+        "end": 13.58,
+        "word": " inside"
+      },
+      {
+        "start": 13.58,
+        "end": 13.98,
+        "word": " of"
+      },
+      {
+        "start": 13.98,
+        "end": 14.14,
+        "word": " it"
+      },
+      {
+        "start": 14.14,
+        "end": 14.86,
+        "word": " is"
+      }
+    ]
+  },
+  {
+    "start": 14.86,
+    "end": 20.04,
+    "text": "My computer where I was able to fill out an electronic form and send it to Harris County",
+    "words": [
+      {
+        "start": 14.86,
+        "end": 15.32,
+        "word": " My"
+      },
+      {
+        "start": 15.32,
+        "end": 15.64,
+        "word": " computer"
+      },
+      {
+        "start": 15.64,
+        "end": 16.22,
+        "word": " where"
+      },
+      {
+        "start": 16.22,
+        "end": 16.34,
+        "word": " I"
+      },
+      {
+        "start": 16.34,
+        "end": 16.42,
+        "word": " was"
+      },
+      {
+        "start": 16.42,
+        "end": 16.56,
+        "word": " able"
+      },
+      {
+        "start": 16.56,
+        "end": 16.78,
+        "word": " to"
+      },
+      {
+        "start": 16.78,
+        "end": 16.96,
+        "word": " fill"
+      },
+      {
+        "start": 16.96,
+        "end": 17.16,
+        "word": " out"
+      },
+      {
+        "start": 17.16,
+        "end": 17.38,
+        "word": " an"
+      },
+      {
+        "start": 17.38,
+        "end": 17.64,
+        "word": " electronic"
+      },
+      {
+        "start": 17.64,
+        "end": 18.36,
+        "word": " form"
+      },
+      {
+        "start": 18.36,
+        "end": 18.64,
+        "word": " and"
+      },
+      {
+        "start": 18.64,
+        "end": 18.96,
+        "word": " send"
+      },
+      {
+        "start": 18.96,
+        "end": 19.14,
+        "word": " it"
+      },
+      {
+        "start": 19.14,
+        "end": 19.28,
+        "word": " to"
+      },
+      {
+        "start": 19.28,
+        "end": 19.48,
+        "word": " Harris"
+      },
+      {
+        "start": 19.48,
+        "end": 20.04,
+        "word": " County"
+      }
+    ]
+  },
+  {
+    "start": 20.04,
+    "end": 21.5,
+    "text": "So I can vote today",
+    "words": [
+      {
+        "start": 20.04,
+        "end": 20.42,
+        "word": " So"
+      },
+      {
+        "start": 20.42,
+        "end": 20.62,
+        "word": " I"
+      },
+      {
+        "start": 20.62,
+        "end": 20.76,
+        "word": " can"
+      },
+      {
+        "start": 20.76,
+        "end": 21.0,
+        "word": " vote"
+      },
+      {
+        "start": 21.0,
+        "end": 21.5,
+        "word": " today"
+      }
+    ]
+  }
+]
