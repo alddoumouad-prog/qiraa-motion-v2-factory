@@ -1,0 +1,14 @@
+{
+  "check_id": "qiraa-cloud-check-20261104-01",
+  "result": "success",
+  "steps": {
+    "install": "success",
+    "tests": "success",
+    "render": "success",
+    "artifact": "success"
+  },
+  "run_id": 41888150358,
+  "run_url": "https://github.com/alddoumouad-prog/qiraa-motion-v2-factory/actions/runs/41888150358",
+  "tested_commit": "891b7f39b5bddb85eec169eff7f6ef3d53a9c168",
+  "note": "Diagnostic run; the sample remains a draft and source rights are not confirmed."
+}
