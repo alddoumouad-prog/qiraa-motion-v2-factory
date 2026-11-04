@@ -1,0 +1,10 @@
+{
+  "check_id": "qiraa-production-20261104-01",
+  "result": "success",
+  "production_step": "success",
+  "production_conclusion": "success",
+  "production_run_id": "41888609533",
+  "production_run_url": "https://github.com/alddoumouad-prog/qiraa-motion-v2-factory/actions/runs/41888609533",
+  "verification_run_url": "https://github.com/alddoumouad-prog/qiraa-motion-v2-factory/actions/runs/41888588681",
+  "note": "Sample is a draft; source permission remains unconfirmed."
+}
