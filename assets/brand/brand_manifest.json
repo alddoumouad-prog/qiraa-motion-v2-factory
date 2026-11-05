@@ -1,0 +1,31 @@
+{
+  "profile_id": "qiraa-motion-v2-golden-1",
+  "description": "Approved golden Motion V2 baseline; update only with owner consent. Hashes ensure reproducibility, not a security boundary.",
+  "files": {
+    "factory/render_motion.py": "ff3665f576356ea280b57a2316afc235aca244a79ab54801518900703c46be08",
+    "factory/classic_renderer.py": "15c10ae0dab15483b6ef179828982beb64b5978ef3ec60cc2ccad42b77196ccf",
+    "factory/pipeline.py": "7248336708a4d4b99b2daffbed3dfd8d0218a161e028db39e9cbfd8642351dd1",
+    "factory/brand_lock.py": "77cb49ef7e068bb1053f4a62dc6d5a711007eb53a83a3d161ab7f62fbc720ee6",
+    "assets/brand/Cairo.ttf": "667c987182391c91f4e57a2f455b1794fb5e3ee6ca4ef3383e86bb690fa9c964",
+    "assets/brand/Inter.ttf": "29160a80ff49ddcab2c97711247e08b1fab27a484a329ce8b813d820dc559031",
+    "assets/brand/logo_icon.png": "2b80a7b0c025016e21c6a3c58f1a7db7fd025e11d1408bd9ddbd6b8b1c2b3015",
+    "assets/brand/logo_wordmark.png": "6cb41f20b91a1c235aac06fbb83fafb7d24676fa4c6d6ffede3c54e057620afd",
+    "assets/brand/logo_wordmark_dark.png": "d4b7225a3a45863535daf0fa2d8a5ee96ee5b934863a37e268bb3243e771e97a",
+    "assets/brand/originals/calligraphy-aref-ruqaa.png": "0971ba6239bb8d683ad471a86489ec3b0bebe080af51751397f811bc362b7926",
+    "assets/brand/originals/akhbar-alalam-global-news.png": "34d41c36fbee08663740514fd734a8815c132c393d42b28d985c40bc608929d3",
+    "assets/sfx/QT_CRD_005_BentoIn.wav": "fbfa60cd86e256e8fb05a103d3396e478462a45301f55569324a5b90ae6f91b9",
+    "assets/sfx/QT_TAP_003_CrispTap.wav": "091f752c1a37f0ef2fb6b61613208e876346bd894fc436754be7334d82a55224",
+    "assets/sfx/QT_TRN_003_DeepMacro.wav": "c0512e644e3a77d3bca57fe2c138127d1c1f616af6ba8a551f0c2767aef4b067",
+    "assets/sfx/QT_TRN_010_LogoClick.wav": "6f28b993cf47bd26a5431f7507a06352e63f6f820930fd950c6b2874dd124f3e",
+    "assets/sfx/QT_TXT_001_TextReveal.wav": "5f0f14436137499f5d5e3f5cc7420aa882149c29a5fc98a964f46c4f93cafb3c",
+    "assets/sfx/recipe_motion_v2.json": "54e69865807b1fbdb8332bc0692cba167a6ee7190de55c77365f2fda1b83dbbc",
+    "assets/voice/approved_audition_reference.mp3": "1377fdccc737f7ca746583bb960b9699d6ec43ab2f3ed5e3cf7f94c08c22f728",
+    "assets/voice/voice_profile.json": "4fd60505cb48274cfa7374f8eebd2a98fe3734acee4f3f2701fb2115f30bc779",
+    "assets/reference/motion_v2_golden_layout.jpg": "708e51ae7b73b17aeab6bace310bb6ad84b31ea299a1f4a0208c3ec26663432d",
+    "examples/space/audio/micro_01.mp3": "945694d66562530613f4c78167ea9508afbb34c861117febdbe91421012dfe3e",
+    "examples/space/audio/micro_02.mp3": "cdb909da2d7d80b8934df3ab52a95c151d519b44634f08e3b1587850fc4021b1",
+    "examples/space/audio/narration_a.mp3": "e97a88264f8d60483b06838ada6e71ab3838408008adc1cc4ac454c710660488",
+    "examples/space/audio/narration_b2.mp3": "62f5cae88bcdade231d47eb6f5a5497ba9345ca1a7643b298f09486ff8a7ebac",
+    "examples/space/audio/narration_c2.mp3": "095e64ca024569be6d7c89f19324ee012ea1fa2f8907084ab689b004e6beb74f"
+  }
+}

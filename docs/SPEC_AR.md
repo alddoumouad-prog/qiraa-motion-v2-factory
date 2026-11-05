@@ -15,7 +15,7 @@
 | `cards` | أربع بطاقات، لكل واحدة `kicker`, `value`, `sub`, `start`, `end`. كل بطاقة من 5.22 إلى 23.5 ثانية، مدتها ≥0.7ث، ولا تتقاطع مع بطاقة أخرى أو المداخلة. لا تختلق أرقامًا لملء البطاقات. |
 | `narration` | ثلاثة مقاطع: `id`, `text`, `start`, `max_seconds`، و`audio_file` عند `pre_recorded`. |
 | `micro` | مداخلتان: `id`, `text`, `start`, `max_seconds`, `anchor_word`, `anchor_end`، و`audio_file` عند `pre_recorded`. حد النص 45 حرفًا. الكبسولة دائمًا ثانيتان؛ صوتها داخل `max_seconds` ويجب أن يكون أقل من ثانيتين. |
-| `tts.provider` | `pre_recorded` لاستخدام ملفات الصوت، أو `edge` لتوليدها؛ `fallback_voice` هو اسم صوت Edge عند اختيار `edge`. |
+| `tts.provider` | `pre_recorded` لملفات الكلام المعتمد، أو `elevenlabs` للصوت الثابت المهيأ مسبقًا، أو `edge` بعد موافقة المستخدم على بديل. راجع `assets/voice/ملف_الصوت_الذهبي.md`. |
 | `transcript_file` | مسار JSON لتفريغ كلماتي ملتزم داخل المستودع. `start`, `end` للكلمات بتوقيت الملف الأصلي (قبل طرح offset). |
 | `editorial_review` | `facts_verified` لا يصبح true إلا بعد تحقق المحرر. `source_permission_confirmed` لا يصبح true إلا بعد تأكيد الحقوق. غيابه أو قيمته الخاطئة لا تمنح ترخيصًا. |
 

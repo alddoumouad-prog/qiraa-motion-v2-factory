@@ -26,7 +26,7 @@ class MotionSpace(base.Classic):
         im=Image.new('RGBA',(960,140),(0,0,0,0));d=ImageDraw.Draw(im)
         d.rounded_rectangle((0,0,959,139),radius=70,fill=base.rgba(fill))
         tile=self.tile_fit(text,44,text_color,max_width=860)
-        self.paste(im,tile,480,(140-tile.height)//2,1,'center');return im
+        self.paste(im,tile,480,35,1,'center');return im
 
     def make_meta(self):
         im=Image.new('RGBA',(W,H),(0,0,0,0));d=ImageDraw.Draw(im)
@@ -40,7 +40,7 @@ class MotionSpace(base.Classic):
 
     def make_credit(self):
         im=Image.new('RGBA',(W,H),(0,0,0,0))
-        credit=self.tile(self.c['source_credit'],24,IVORY,'Regular',not base.ar(self.c['source_credit'])).rotate(90,expand=True)
+        credit=self.tile('SOURCE: '+self.c['source_credit'],24,IVORY,'Regular',not base.ar(self.c['source_credit'])).rotate(90,expand=True)
         im.paste(credit,(36,620),credit)
         return im
 

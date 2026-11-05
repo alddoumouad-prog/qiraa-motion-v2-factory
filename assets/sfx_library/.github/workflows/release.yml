@@ -1,0 +1,22 @@
+name: Package release
+on:
+  push:
+    tags: ['v*']
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build release archive
+        run: |
+          zip -r qiraa-tactile-ui-sfx.zip audio demo docs src tools assets .github \
+            index.html library.js library.json library.csv manifest.sha256 \
+            README.md PUBLISH_AR.md CONTRIBUTING.md CHANGELOG.md LICENSE \
+            CITATION.cff requirements.txt Makefile .gitignore .gitattributes
+      - name: Create or update GitHub release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh release create "${GITHUB_REF_NAME}" qiraa-tactile-ui-sfx.zip --title "Qiraa Tactile UI SFX ${GITHUB_REF_NAME}" --generate-notes || gh release upload "${GITHUB_REF_NAME}" qiraa-tactile-ui-sfx.zip --clobber

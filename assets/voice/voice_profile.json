@@ -1,0 +1,19 @@
+{
+  "profile_id": "qiraa-motion-v2-voice-01",
+  "reference_audio": "assets/voice/approved_audition_reference.mp3",
+  "reference_audio_origin": "Three narration clips from the voice selected in the original Arena session; supplied for listening and comparison, not a portable voice model.",
+  "production_voice_id_status": "not_configured",
+  "approved_provider_for_new_scripts": null,
+  "voice_design_description_en": "A clear, natural Arabic news and documentary voice, warm and composed, with a confident medium-register delivery. Speak Modern Standard Arabic clearly, with natural phrasing and brief pauses, articulate consonants, and gently emphasize the key idea without shouting or theatrical advertising. Close and clean studio sound, no background noise or music.",
+  "performance_direction_ar": "صوت عربي فصيح واضح، قريب وهادئ وواثق، بإيقاع إخباري حيوي غير مسرحي. جمل قصيرة ونَفَس طبيعي ووقفات خفيفة، مع إبراز لطيف للكلمات المهمة وبدون صراخ أو مؤثرات على التعليق الرئيسي.",
+  "elevenlabs_settings": {
+    "model_id": "eleven_multilingual_v2",
+    "stability": 0.5,
+    "similarity_boost": 0.75,
+    "style": 0.0,
+    "use_speaker_boost": true,
+    "speed": 1.0
+  },
+  "micro_commentary_filter_hz": [350, 3000],
+  "important": "The description is guidance and does not reproduce the selected voice or grant voice-cloning rights. A separately approved persistent provider voice ID is required for consistent new scripts. Do not silently substitute voices."
+}

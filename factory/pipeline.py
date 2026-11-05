@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 """Build a reviewable 28-second Motion V2 draft. All paths are relative to repository root."""
 from __future__ import annotations
-import argparse, asyncio, hashlib, json, math, re, shutil, subprocess, sys
+import argparse, asyncio, hashlib, json, math, os, re, shutil, subprocess, sys
+import urllib.request, urllib.error
 from pathlib import Path
 import cv2
 import imageio_ffmpeg
@@ -18,6 +19,7 @@ FF=imageio_ffmpeg.get_ffmpeg_exe()
 TRIM='silenceremove=start_periods=1:start_threshold=-45dB:start_silence=0.03,areverse,silenceremove=start_periods=1:start_threshold=-45dB:start_silence=0.03,areverse'
 sys.path.insert(0,str(ROOT/'factory'))
 import render_motion
+import brand_lock
 
 
 def fail(message):raise ValueError(message)
@@ -38,7 +40,7 @@ def load_spec(path):
     if not 0<=float(s['source_offset_seconds'])<=86400:fail('Invalid source offset')
     if len(s['headline_lines'])!=3 or len(s['cards'])!=4 or len(s['narration'])!=3 or len(s['micro'])!=2:fail('Require exactly 3 headline lines, 4 cards, 3 narration clips, and 2 micro clips')
     if not re.fullmatch(r'\d{2}\.\d{2}\.\d{4}',s['date']):fail('date must be DD.MM.YYYY')
-    if s['tts']['provider'] not in ('pre_recorded','edge'):fail('tts.provider must be pre_recorded or edge')
+    if s['tts']['provider'] not in ('pre_recorded','edge','elevenlabs'):fail('tts.provider must be pre_recorded, elevenlabs or an explicitly approved edge fallback')
     if not isinstance(s['editorial_review'].get('facts_verified'),bool) or not isinstance(s['editorial_review'].get('source_permission_confirmed'),bool):fail('Editorial review fields must be booleans')
     if not s['editorial_review']['facts_verified']:fail('Editorial facts must be verified before rendering')
     if not s['editorial_review']['source_permission_confirmed']:print('WARNING: source rights are NOT confirmed; output is a draft only',flush=True)
@@ -124,6 +126,29 @@ async def synthesize_edge(text,path,voice):
     import edge_tts
     await edge_tts.Communicate(text,voice=voice).save(str(path))
 
+
+def synthesize_elevenlabs(text,path):
+    """Use a pre-approved voice ID; never log, commit or embed the API key."""
+    api_key=os.environ.get('ELEVENLABS_API_KEY','').strip()
+    voice_id=os.environ.get('ELEVENLABS_VOICE_ID','').strip()
+    if not api_key or not voice_id:
+        fail('ElevenLabs voice is not configured; add ELEVENLABS_API_KEY and ELEVENLABS_VOICE_ID securely, or use approved prerecorded clips')
+    if not re.fullmatch(r'[A-Za-z0-9_-]{5,100}',voice_id):fail('Invalid ElevenLabs voice ID')
+    payload={'text':text,'model_id':'eleven_multilingual_v2','voice_settings':{'stability':0.5,'similarity_boost':0.75,'style':0.0,'use_speaker_boost':True,'speed':1.0}}
+    request=urllib.request.Request('https://api.elevenlabs.io/v1/text-to-speech/'+voice_id+'?output_format=mp3_44100_128',
+        data=json.dumps(payload,ensure_ascii=False).encode('utf-8'),method='POST',
+        headers={'xi-api-key':api_key,'Content-Type':'application/json','Accept':'audio/mpeg'})
+    try:
+        with urllib.request.urlopen(request,timeout=60) as response:
+            audio=response.read(12000001)
+    except urllib.error.HTTPError as e:
+        raise RuntimeError(f'ElevenLabs TTS failed (HTTP {e.code}); verify account, voice ID, permissions and credits') from None
+    except (urllib.error.URLError,TimeoutError,OSError):
+        raise RuntimeError('ElevenLabs TTS connection failed') from None
+    if not 512<=len(audio)<=12000000:fail('ElevenLabs returned an invalid audio response')
+    Path(path).write_bytes(audio)
+
+
 def generate_mix(s,source):
     vox=np.zeros((N,2),np.float64);mic=np.zeros((N,2),np.float64);events=[]
     audio_dir=WORK/'voices';audio_dir.mkdir(exist_ok=True)
@@ -133,9 +158,12 @@ def generate_mix(s,source):
                 if not e.get('audio_file'):fail('pre_recorded clip requires audio_file')
                 path=local_path(e['audio_file'])
                 if not path.is_file():fail('Missing prerecorded audio: '+str(path))
-            else:
+            elif s['tts']['provider']=='edge':
                 path=audio_dir/(e['id']+'.mp3')
                 asyncio.run(synthesize_edge(e['text'],path,s['tts'].get('fallback_voice','ar-MA-JamalNeural')))
+            else:
+                path=audio_dir/(e['id']+'.mp3')
+                synthesize_elevenlabs(e['text'],path)
             clean=decode(path,1,TRIM)
             duration=len(clean)/SR
             if duration<=0:fail('Empty narration')
@@ -178,18 +206,25 @@ def generate_mix(s,source):
     alpha=math.exp(-1/(.030*SR));smooth=lfilter([1-alpha],[1,-alpha],target)
     bed*=np.power(10,(smooth+3)/20)[:,None]
     effects=np.zeros((N,2),np.float64)
-    fx=[('QT_TXT_001_TextReveal',x) for x in (.05,.17,.29)]+[('QT_CRD_005_BentoIn',.65)]
-    fx += [('QT_CRD_005_BentoIn',float(c['start'])) for c in s['cards']]
-    fx += [('QT_TAP_003_CrispTap',float(m['start'])) for m in s['micro']]
-    fx += [('QT_TRN_010_LogoClick',23.5)]+[('QT_TAP_003_CrispTap',x) for x in (23.85,24.50,25.15)]
-    for name,start in fx:add(effects,norm(decode(ROOT/'assets/sfx'/f'{name}.wav'),-15),start)
+    recipe=json.loads((ROOT/'assets/sfx/recipe_motion_v2.json').read_text(encoding='utf-8'))
+    fx=[]
+    for item in recipe['events']:
+        name=item['asset'];where=item['at']
+        if not re.fullmatch(r'[A-Za-z0-9_]+',name):fail('Invalid SFX asset in recipe')
+        if where=='each_card_start':times=[float(c['start']) for c in s['cards']]
+        elif where=='each_micro_start':times=[float(m['start']) for m in s['micro']]
+        else:times=[float(where)]
+        for start in times:
+            if not 0<=start<DURATION:fail('Invalid SFX time')
+            fx.append((name,start))
+            add(effects,norm(decode(ROOT/'assets/sfx'/f'{name}.wav'),float(recipe['peak_dbfs_each_before_master'])),start)
     mixed=np.tanh((bed+vox+mic+effects)*.96)/np.tanh(.96)
     wavfile.write(WORK/'mix_premaster.wav',SR,mixed.astype(np.float32))
     run([FF,'-y','-hide_banner','-loglevel','error','-i',WORK/'mix_premaster.wav','-af','loudnorm=I=-14:TP=-1.5:LRA=11','-ar',str(SR),'-ac','2','-c:a','pcm_s24le',WORK/'mix_master.wav'])
-    return events,source_audio_status
+    return events,source_audio_status,fx
 
 
-def qa(s,video,events,source_audio_status):
+def qa(s,video,events,source_audio_status,sfx_events):
     run([FF,'-v','error','-i',video,'-f','null','-'])
     cap=cv2.VideoCapture(str(video));fps=cap.get(cv2.CAP_PROP_FPS);frames=int(cap.get(cv2.CAP_PROP_FRAME_COUNT));width=int(cap.get(cv2.CAP_PROP_FRAME_WIDTH));height=int(cap.get(cv2.CAP_PROP_FRAME_HEIGHT));cap.release()
     if (width,height,frames,round(fps,3))!=(1080,1920,840,30.0):fail('Output format mismatch')
@@ -204,7 +239,7 @@ def qa(s,video,events,source_audio_status):
     contact.save(OUTPUT/'contact_sheet.jpg',quality=94)
     p=run([FF,'-hide_banner','-nostats','-i',video,'-map','0:a:0','-af','ebur128=peak=true','-f','null','-'],capture_output=True,text=True)
     (OUTPUT/'loudness.txt').write_text(p.stderr[-4000:],encoding='utf-8')
-    report={'project_id':s['project_id'],'frames':frames,'fps':fps,'width':width,'height':height,'duration_seconds':frames/fps,'source_audio_status':source_audio_status,'audio_events':events,'video_sha256':hashlib.sha256(video.read_bytes()).hexdigest(),'facts_verified_by_editor':s['editorial_review']['facts_verified'],'source_permission_confirmed':s['editorial_review']['source_permission_confirmed'],'publication_status':'DRAFT — visual, listening, factual, permission and platform review required','automatic_checks':['full decode','dimensions','duration','audio windows','anchor in transcript','contact sheet'],'not_automatic':['meaning, truth and context','rights and permission','human visual/audio review','social-media publication']}
+    report={'project_id':s['project_id'],'brand_profile':'qiraa-motion-v2-golden-1','frames':frames,'fps':fps,'width':width,'height':height,'duration_seconds':frames/fps,'source_audio_status':source_audio_status,'voice_provider':s['tts']['provider'],'voice_id_fingerprint':hashlib.sha256(os.environ.get('ELEVENLABS_VOICE_ID','').encode()).hexdigest()[:16] if s['tts']['provider']=='elevenlabs' and os.environ.get('ELEVENLABS_VOICE_ID') else None,'audio_events':events,'sfx_events':[{'asset':name,'start':start} for name,start in sfx_events],'video_sha256':hashlib.sha256(video.read_bytes()).hexdigest(),'facts_verified_by_editor':s['editorial_review']['facts_verified'],'source_permission_confirmed':s['editorial_review']['source_permission_confirmed'],'publication_status':'DRAFT — visual, listening, factual, permission and platform review required','automatic_checks':['full decode','dimensions','duration','audio windows','anchor in transcript','contact sheet'],'not_automatic':['meaning, truth and context','rights and permission','human visual/audio review','social-media publication']}
     (OUTPUT/'qa_report.json').write_text(json.dumps(report,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
     shutil.copy2(local_path(s['transcript_file']),OUTPUT/'transcript_words.json')
     (OUTPUT/'used_spec.json').write_text(json.dumps(s,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
@@ -213,18 +248,21 @@ def qa(s,video,events,source_audio_status):
 
 def main():
     ap=argparse.ArgumentParser();ap.add_argument('--spec',default='spec.json');ap.add_argument('--source',help='Local source override for testing; not embedded into the repository');ap.add_argument('--validate-only',action='store_true');a=ap.parse_args()
+    profile=brand_lock.verify();print('Golden brand assets verified:',profile,flush=True)
     s=load_spec(a.spec);print('Spec and anchor checks passed',flush=True)
     if a.validate_only:return
+    if s['tts']['provider']=='elevenlabs' and (not os.environ.get('ELEVENLABS_API_KEY','').strip() or not os.environ.get('ELEVENLABS_VOICE_ID','').strip()):
+        fail('ElevenLabs voice is not configured; securely add ELEVENLABS_API_KEY and ELEVENLABS_VOICE_ID before production')
     from PIL import features
     if not features.check_feature('raqm'):fail('Pillow must include RAQM for proper Arabic shaping')
     for p in (WORK,OUTPUT):
         if p.exists():shutil.rmtree(p)
         p.mkdir(parents=True)
-    source=prepare_source(s,a.source);events,source_audio_status=generate_mix(s,source)
+    source=prepare_source(s,a.source);events,source_audio_status,sfx_events=generate_mix(s,source)
     render_motion.picture(WORK,source,s)
     video=OUTPUT/(s['project_id']+'_Motion_V2.mp4')
     run([FF,'-y','-hide_banner','-loglevel','error','-i',WORK/'picture.mp4','-i',WORK/'mix_master.wav','-map','0:v:0','-map','1:a:0','-c:v','copy','-c:a','aac','-b:a','192k','-ar',str(SR),'-t',str(DURATION),'-movflags','+faststart',video])
-    qa(s,video,events,source_audio_status)
+    qa(s,video,events,source_audio_status,sfx_events)
     print('\nDELIVERABLE:',video,flush=True)
 
 if __name__=='__main__':

@@ -1,0 +1,121 @@
+﻿id,title,category,category_ar,duration_ms,sample_rate,bit_depth,channels,peak_dbfs,wav,mp3,suggested_use,license
+QT_TAP_001,FeatherTap,Taps,لمسات,100,48000,24,1,-15.0,audio/Taps/QT_TAP_001_FeatherTap.wav,audio/Taps/QT_TAP_001_FeatherTap.mp3,"Buttons, small UI touches, timeline markers",MIT
+QT_TAP_002,SoftTap,Taps,لمسات,108,48000,24,1,-15.0,audio/Taps/QT_TAP_002_SoftTap.wav,audio/Taps/QT_TAP_002_SoftTap.mp3,"Buttons, small UI touches, timeline markers",MIT
+QT_TAP_003,CrispTap,Taps,لمسات,116,48000,24,1,-15.0,audio/Taps/QT_TAP_003_CrispTap.wav,audio/Taps/QT_TAP_003_CrispTap.mp3,"Buttons, small UI touches, timeline markers",MIT
+QT_TAP_004,FirmTap,Taps,لمسات,124,48000,24,1,-15.0,audio/Taps/QT_TAP_004_FirmTap.wav,audio/Taps/QT_TAP_004_FirmTap.mp3,"Buttons, small UI touches, timeline markers",MIT
+QT_TAP_005,VelvetTap,Taps,لمسات,132,48000,24,1,-15.0,audio/Taps/QT_TAP_005_VelvetTap.wav,audio/Taps/QT_TAP_005_VelvetTap.mp3,"Buttons, small UI touches, timeline markers",MIT
+QT_TAP_006,StudioTap,Taps,لمسات,140,48000,24,1,-15.0,audio/Taps/QT_TAP_006_StudioTap.wav,audio/Taps/QT_TAP_006_StudioTap.mp3,"Buttons, small UI touches, timeline markers",MIT
+QT_TAP_007,MicroTap,Taps,لمسات,148,48000,24,1,-15.0,audio/Taps/QT_TAP_007_MicroTap.wav,audio/Taps/QT_TAP_007_MicroTap.mp3,"Buttons, small UI touches, timeline markers",MIT
+QT_TAP_008,RoundedTap,Taps,لمسات,156,48000,24,1,-15.0,audio/Taps/QT_TAP_008_RoundedTap.wav,audio/Taps/QT_TAP_008_RoundedTap.mp3,"Buttons, small UI touches, timeline markers",MIT
+QT_TAP_009,SnapTap,Taps,لمسات,164,48000,24,1,-15.0,audio/Taps/QT_TAP_009_SnapTap.wav,audio/Taps/QT_TAP_009_SnapTap.mp3,"Buttons, small UI touches, timeline markers",MIT
+QT_TAP_010,MutedTap,Taps,لمسات,172,48000,24,1,-15.0,audio/Taps/QT_TAP_010_MutedTap.wav,audio/Taps/QT_TAP_010_MutedTap.mp3,"Buttons, small UI touches, timeline markers",MIT
+QT_CLK_001,MechanicalClick,Clicks,نقرات,120,48000,24,1,-15.0,audio/Clicks/QT_CLK_001_MechanicalClick.wav,audio/Clicks/QT_CLK_001_MechanicalClick.mp3,Mechanical UI clicks and tactile feedback,MIT
+QT_CLK_002,CeramicClick,Clicks,نقرات,129,48000,24,1,-15.0,audio/Clicks/QT_CLK_002_CeramicClick.wav,audio/Clicks/QT_CLK_002_CeramicClick.mp3,Mechanical UI clicks and tactile feedback,MIT
+QT_CLK_003,CrispClick,Clicks,نقرات,138,48000,24,1,-15.0,audio/Clicks/QT_CLK_003_CrispClick.wav,audio/Clicks/QT_CLK_003_CrispClick.mp3,Mechanical UI clicks and tactile feedback,MIT
+QT_CLK_004,SoftClick,Clicks,نقرات,147,48000,24,1,-15.0,audio/Clicks/QT_CLK_004_SoftClick.wav,audio/Clicks/QT_CLK_004_SoftClick.mp3,Mechanical UI clicks and tactile feedback,MIT
+QT_CLK_005,DeepClick,Clicks,نقرات,156,48000,24,1,-15.0,audio/Clicks/QT_CLK_005_DeepClick.wav,audio/Clicks/QT_CLK_005_DeepClick.mp3,Mechanical UI clicks and tactile feedback,MIT
+QT_CLK_006,TinyClick,Clicks,نقرات,165,48000,24,1,-15.0,audio/Clicks/QT_CLK_006_TinyClick.wav,audio/Clicks/QT_CLK_006_TinyClick.mp3,Mechanical UI clicks and tactile feedback,MIT
+QT_CLK_007,DoubleClick,Clicks,نقرات,320,48000,24,1,-15.0,audio/Clicks/QT_CLK_007_DoubleClick.wav,audio/Clicks/QT_CLK_007_DoubleClick.mp3,Mechanical UI clicks and tactile feedback,MIT
+QT_CLK_008,SwitchClick,Clicks,نقرات,183,48000,24,1,-15.0,audio/Clicks/QT_CLK_008_SwitchClick.wav,audio/Clicks/QT_CLK_008_SwitchClick.mp3,Mechanical UI clicks and tactile feedback,MIT
+QT_CLK_009,TickClick,Clicks,نقرات,192,48000,24,1,-15.0,audio/Clicks/QT_CLK_009_TickClick.wav,audio/Clicks/QT_CLK_009_TickClick.mp3,Mechanical UI clicks and tactile feedback,MIT
+QT_CLK_010,PulseClick,Clicks,نقرات,320,48000,24,1,-15.0,audio/Clicks/QT_CLK_010_PulseClick.wav,audio/Clicks/QT_CLK_010_PulseClick.mp3,Mechanical UI clicks and tactile feedback,MIT
+QT_PRS_001,SoftPress,Presses,ضغطات,200,48000,24,1,-15.0,audio/Presses/QT_PRS_001_SoftPress.wav,audio/Presses/QT_PRS_001_SoftPress.mp3,Press/release actions and weighted buttons,MIT
+QT_PRS_002,DeepPress,Presses,ضغطات,212,48000,24,1,-15.0,audio/Presses/QT_PRS_002_DeepPress.wav,audio/Presses/QT_PRS_002_DeepPress.mp3,Press/release actions and weighted buttons,MIT
+QT_PRS_003,ThockPress,Presses,ضغطات,224,48000,24,1,-15.0,audio/Presses/QT_PRS_003_ThockPress.wav,audio/Presses/QT_PRS_003_ThockPress.mp3,Press/release actions and weighted buttons,MIT
+QT_PRS_004,ButtonPress,Presses,ضغطات,236,48000,24,1,-15.0,audio/Presses/QT_PRS_004_ButtonPress.wav,audio/Presses/QT_PRS_004_ButtonPress.mp3,Press/release actions and weighted buttons,MIT
+QT_PRS_005,PressRelease,Presses,ضغطات,248,48000,24,1,-15.0,audio/Presses/QT_PRS_005_PressRelease.wav,audio/Presses/QT_PRS_005_PressRelease.mp3,Press/release actions and weighted buttons,MIT
+QT_PRS_006,HeavyPress,Presses,ضغطات,260,48000,24,1,-15.0,audio/Presses/QT_PRS_006_HeavyPress.wav,audio/Presses/QT_PRS_006_HeavyPress.mp3,Press/release actions and weighted buttons,MIT
+QT_PRS_007,CompactPress,Presses,ضغطات,272,48000,24,1,-15.0,audio/Presses/QT_PRS_007_CompactPress.wav,audio/Presses/QT_PRS_007_CompactPress.mp3,Press/release actions and weighted buttons,MIT
+QT_PRS_008,RoundedPress,Presses,ضغطات,284,48000,24,1,-15.0,audio/Presses/QT_PRS_008_RoundedPress.wav,audio/Presses/QT_PRS_008_RoundedPress.mp3,Press/release actions and weighted buttons,MIT
+QT_PRS_009,SubtlePress,Presses,ضغطات,296,48000,24,1,-15.0,audio/Presses/QT_PRS_009_SubtlePress.wav,audio/Presses/QT_PRS_009_SubtlePress.mp3,Press/release actions and weighted buttons,MIT
+QT_PRS_010,LowPress,Presses,ضغطات,308,48000,24,1,-15.0,audio/Presses/QT_PRS_010_LowPress.wav,audio/Presses/QT_PRS_010_LowPress.mp3,Press/release actions and weighted buttons,MIT
+QT_TGL_001,ToggleOn,Toggles,مفاتيح,300,48000,24,1,-15.0,audio/Toggles/QT_TGL_001_ToggleOn.wav,audio/Toggles/QT_TGL_001_ToggleOn.mp3,On/off switches and state changes,MIT
+QT_TGL_002,ToggleOff,Toggles,مفاتيح,300,48000,24,1,-15.0,audio/Toggles/QT_TGL_002_ToggleOff.wav,audio/Toggles/QT_TGL_002_ToggleOff.mp3,On/off switches and state changes,MIT
+QT_TGL_003,SwitchOn,Toggles,مفاتيح,300,48000,24,1,-15.0,audio/Toggles/QT_TGL_003_SwitchOn.wav,audio/Toggles/QT_TGL_003_SwitchOn.mp3,On/off switches and state changes,MIT
+QT_TGL_004,SwitchOff,Toggles,مفاتيح,300,48000,24,1,-15.0,audio/Toggles/QT_TGL_004_SwitchOff.wav,audio/Toggles/QT_TGL_004_SwitchOff.mp3,On/off switches and state changes,MIT
+QT_TGL_005,ToggleSoft,Toggles,مفاتيح,300,48000,24,1,-15.0,audio/Toggles/QT_TGL_005_ToggleSoft.wav,audio/Toggles/QT_TGL_005_ToggleSoft.mp3,On/off switches and state changes,MIT
+QT_TGL_006,ToggleCrisp,Toggles,مفاتيح,300,48000,24,1,-15.0,audio/Toggles/QT_TGL_006_ToggleCrisp.wav,audio/Toggles/QT_TGL_006_ToggleCrisp.mp3,On/off switches and state changes,MIT
+QT_TGL_007,ToggleDeep,Toggles,مفاتيح,300,48000,24,1,-15.0,audio/Toggles/QT_TGL_007_ToggleDeep.wav,audio/Toggles/QT_TGL_007_ToggleDeep.mp3,On/off switches and state changes,MIT
+QT_TGL_008,SlideToggle,Toggles,مفاتيح,300,48000,24,1,-15.0,audio/Toggles/QT_TGL_008_SlideToggle.wav,audio/Toggles/QT_TGL_008_SlideToggle.mp3,On/off switches and state changes,MIT
+QT_TGL_009,MicroToggle,Toggles,مفاتيح,300,48000,24,1,-15.0,audio/Toggles/QT_TGL_009_MicroToggle.wav,audio/Toggles/QT_TGL_009_MicroToggle.mp3,On/off switches and state changes,MIT
+QT_TGL_010,ConfirmToggle,Toggles,مفاتيح,300,48000,24,1,-15.0,audio/Toggles/QT_TGL_010_ConfirmToggle.wav,audio/Toggles/QT_TGL_010_ConfirmToggle.mp3,On/off switches and state changes,MIT
+QT_TXT_001,TextReveal,Text_Reveal,كشف النصوص,260,48000,24,1,-15.0,audio/Text_Reveal/QT_TXT_001_TextReveal.wav,audio/Text_Reveal/QT_TXT_001_TextReveal.mp3,"Headline, subtitle, word and number reveals",MIT
+QT_TXT_002,LineReveal,Text_Reveal,كشف النصوص,300,48000,24,1,-15.0,audio/Text_Reveal/QT_TXT_002_LineReveal.wav,audio/Text_Reveal/QT_TXT_002_LineReveal.mp3,"Headline, subtitle, word and number reveals",MIT
+QT_TXT_003,WordTick,Text_Reveal,كشف النصوص,340,48000,24,1,-15.0,audio/Text_Reveal/QT_TXT_003_WordTick.wav,audio/Text_Reveal/QT_TXT_003_WordTick.mp3,"Headline, subtitle, word and number reveals",MIT
+QT_TXT_004,NumberTick,Text_Reveal,كشف النصوص,220,48000,24,1,-15.0,audio/Text_Reveal/QT_TXT_004_NumberTick.wav,audio/Text_Reveal/QT_TXT_004_NumberTick.mp3,"Headline, subtitle, word and number reveals",MIT
+QT_TXT_005,TypePulse,Text_Reveal,كشف النصوص,260,48000,24,1,-15.0,audio/Text_Reveal/QT_TXT_005_TypePulse.wav,audio/Text_Reveal/QT_TXT_005_TypePulse.mp3,"Headline, subtitle, word and number reveals",MIT
+QT_TXT_006,CaptionIn,Text_Reveal,كشف النصوص,300,48000,24,1,-15.0,audio/Text_Reveal/QT_TXT_006_CaptionIn.wav,audio/Text_Reveal/QT_TXT_006_CaptionIn.mp3,"Headline, subtitle, word and number reveals",MIT
+QT_TXT_007,CaptionOut,Text_Reveal,كشف النصوص,340,48000,24,1,-15.0,audio/Text_Reveal/QT_TXT_007_CaptionOut.wav,audio/Text_Reveal/QT_TXT_007_CaptionOut.mp3,"Headline, subtitle, word and number reveals",MIT
+QT_TXT_008,TitleSettle,Text_Reveal,كشف النصوص,220,48000,24,1,-15.0,audio/Text_Reveal/QT_TXT_008_TitleSettle.wav,audio/Text_Reveal/QT_TXT_008_TitleSettle.mp3,"Headline, subtitle, word and number reveals",MIT
+QT_TXT_009,SubtitleIn,Text_Reveal,كشف النصوص,260,48000,24,1,-15.0,audio/Text_Reveal/QT_TXT_009_SubtitleIn.wav,audio/Text_Reveal/QT_TXT_009_SubtitleIn.mp3,"Headline, subtitle, word and number reveals",MIT
+QT_TXT_010,KineticTick,Text_Reveal,كشف النصوص,300,48000,24,1,-15.0,audio/Text_Reveal/QT_TXT_010_KineticTick.wav,audio/Text_Reveal/QT_TXT_010_KineticTick.mp3,"Headline, subtitle, word and number reveals",MIT
+QT_CRD_001,CardIn,Cards,البطاقات,320,48000,24,2,-15.0,audio/Cards/QT_CRD_001_CardIn.wav,audio/Cards/QT_CRD_001_CardIn.mp3,"Bento cards, panels, lifts and settling motion",MIT
+QT_CRD_002,CardOut,Cards,البطاقات,332,48000,24,2,-15.0,audio/Cards/QT_CRD_002_CardOut.wav,audio/Cards/QT_CRD_002_CardOut.mp3,"Bento cards, panels, lifts and settling motion",MIT
+QT_CRD_003,CardPop,Cards,البطاقات,344,48000,24,2,-15.0,audio/Cards/QT_CRD_003_CardPop.wav,audio/Cards/QT_CRD_003_CardPop.mp3,"Bento cards, panels, lifts and settling motion",MIT
+QT_CRD_004,CardSettle,Cards,البطاقات,356,48000,24,2,-15.0,audio/Cards/QT_CRD_004_CardSettle.wav,audio/Cards/QT_CRD_004_CardSettle.mp3,"Bento cards, panels, lifts and settling motion",MIT
+QT_CRD_005,BentoIn,Cards,البطاقات,368,48000,24,2,-15.0,audio/Cards/QT_CRD_005_BentoIn.wav,audio/Cards/QT_CRD_005_BentoIn.mp3,"Bento cards, panels, lifts and settling motion",MIT
+QT_CRD_006,BentoOut,Cards,البطاقات,380,48000,24,2,-15.0,audio/Cards/QT_CRD_006_BentoOut.wav,audio/Cards/QT_CRD_006_BentoOut.mp3,"Bento cards, panels, lifts and settling motion",MIT
+QT_CRD_007,CardLift,Cards,البطاقات,392,48000,24,2,-15.0,audio/Cards/QT_CRD_007_CardLift.wav,audio/Cards/QT_CRD_007_CardLift.mp3,"Bento cards, panels, lifts and settling motion",MIT
+QT_CRD_008,CardDrop,Cards,البطاقات,404,48000,24,2,-15.0,audio/Cards/QT_CRD_008_CardDrop.wav,audio/Cards/QT_CRD_008_CardDrop.mp3,"Bento cards, panels, lifts and settling motion",MIT
+QT_CRD_009,GlassCard,Cards,البطاقات,416,48000,24,2,-15.0,audio/Cards/QT_CRD_009_GlassCard.wav,audio/Cards/QT_CRD_009_GlassCard.mp3,"Bento cards, panels, lifts and settling motion",MIT
+QT_CRD_010,CardSequence,Cards,البطاقات,428,48000,24,2,-15.0,audio/Cards/QT_CRD_010_CardSequence.wav,audio/Cards/QT_CRD_010_CardSequence.mp3,"Bento cards, panels, lifts and settling motion",MIT
+QT_SWP_001,SoftSwipe,Swipes,سحب وحركة,450,48000,24,2,-15.0,audio/Swipes/QT_SWP_001_SoftSwipe.wav,audio/Swipes/QT_SWP_001_SoftSwipe.mp3,Low-passed swipes and camera movement under 500 Hz,MIT
+QT_SWP_002,DeepSwipe,Swipes,سحب وحركة,485,48000,24,2,-15.0,audio/Swipes/QT_SWP_002_DeepSwipe.wav,audio/Swipes/QT_SWP_002_DeepSwipe.mp3,Low-passed swipes and camera movement under 500 Hz,MIT
+QT_SWP_003,LowWhoosh,Swipes,سحب وحركة,520,48000,24,2,-15.0,audio/Swipes/QT_SWP_003_LowWhoosh.wav,audio/Swipes/QT_SWP_003_LowWhoosh.mp3,Low-passed swipes and camera movement under 500 Hz,MIT
+QT_SWP_004,LeftSwipe,Swipes,سحب وحركة,555,48000,24,2,-15.0,audio/Swipes/QT_SWP_004_LeftSwipe.wav,audio/Swipes/QT_SWP_004_LeftSwipe.mp3,Low-passed swipes and camera movement under 500 Hz,MIT
+QT_SWP_005,RightSwipe,Swipes,سحب وحركة,590,48000,24,2,-15.0,audio/Swipes/QT_SWP_005_RightSwipe.wav,audio/Swipes/QT_SWP_005_RightSwipe.mp3,Low-passed swipes and camera movement under 500 Hz,MIT
+QT_SWP_006,UpSwipe,Swipes,سحب وحركة,625,48000,24,2,-15.0,audio/Swipes/QT_SWP_006_UpSwipe.wav,audio/Swipes/QT_SWP_006_UpSwipe.mp3,Low-passed swipes and camera movement under 500 Hz,MIT
+QT_SWP_007,DownSwipe,Swipes,سحب وحركة,660,48000,24,2,-15.0,audio/Swipes/QT_SWP_007_DownSwipe.wav,audio/Swipes/QT_SWP_007_DownSwipe.mp3,Low-passed swipes and camera movement under 500 Hz,MIT
+QT_SWP_008,MacroIn,Swipes,سحب وحركة,695,48000,24,2,-15.0,audio/Swipes/QT_SWP_008_MacroIn.wav,audio/Swipes/QT_SWP_008_MacroIn.mp3,Low-passed swipes and camera movement under 500 Hz,MIT
+QT_SWP_009,MacroOut,Swipes,سحب وحركة,730,48000,24,2,-15.0,audio/Swipes/QT_SWP_009_MacroOut.wav,audio/Swipes/QT_SWP_009_MacroOut.mp3,Low-passed swipes and camera movement under 500 Hz,MIT
+QT_SWP_010,AirSettle,Swipes,سحب وحركة,765,48000,24,2,-15.0,audio/Swipes/QT_SWP_010_AirSettle.wav,audio/Swipes/QT_SWP_010_AirSettle.mp3,Low-passed swipes and camera movement under 500 Hz,MIT
+QT_NTF_001,SoftNotify,Notifications,التنبيهات,650,48000,24,1,-15.0,audio/Notifications/QT_NTF_001_SoftNotify.wav,audio/Notifications/QT_NTF_001_SoftNotify.mp3,"Subtle messages, badges and notifications",MIT
+QT_NTF_002,MessagePing,Notifications,التنبيهات,650,48000,24,1,-15.0,audio/Notifications/QT_NTF_002_MessagePing.wav,audio/Notifications/QT_NTF_002_MessagePing.mp3,"Subtle messages, badges and notifications",MIT
+QT_NTF_003,SubtleBell,Notifications,التنبيهات,650,48000,24,1,-15.0,audio/Notifications/QT_NTF_003_SubtleBell.wav,audio/Notifications/QT_NTF_003_SubtleBell.mp3,"Subtle messages, badges and notifications",MIT
+QT_NTF_004,NotificationPop,Notifications,التنبيهات,650,48000,24,1,-15.0,audio/Notifications/QT_NTF_004_NotificationPop.wav,audio/Notifications/QT_NTF_004_NotificationPop.mp3,"Subtle messages, badges and notifications",MIT
+QT_NTF_005,GentleAlert,Notifications,التنبيهات,650,48000,24,1,-15.0,audio/Notifications/QT_NTF_005_GentleAlert.wav,audio/Notifications/QT_NTF_005_GentleAlert.mp3,"Subtle messages, badges and notifications",MIT
+QT_NTF_006,UIBeacon,Notifications,التنبيهات,650,48000,24,1,-15.0,audio/Notifications/QT_NTF_006_UIBeacon.wav,audio/Notifications/QT_NTF_006_UIBeacon.mp3,"Subtle messages, badges and notifications",MIT
+QT_NTF_007,QuietNotice,Notifications,التنبيهات,650,48000,24,1,-15.0,audio/Notifications/QT_NTF_007_QuietNotice.wav,audio/Notifications/QT_NTF_007_QuietNotice.mp3,"Subtle messages, badges and notifications",MIT
+QT_NTF_008,BadgePop,Notifications,التنبيهات,650,48000,24,1,-15.0,audio/Notifications/QT_NTF_008_BadgePop.wav,audio/Notifications/QT_NTF_008_BadgePop.mp3,"Subtle messages, badges and notifications",MIT
+QT_NTF_009,PingRounded,Notifications,التنبيهات,650,48000,24,1,-15.0,audio/Notifications/QT_NTF_009_PingRounded.wav,audio/Notifications/QT_NTF_009_PingRounded.mp3,"Subtle messages, badges and notifications",MIT
+QT_NTF_010,NotifyGlass,Notifications,التنبيهات,650,48000,24,1,-15.0,audio/Notifications/QT_NTF_010_NotifyGlass.wav,audio/Notifications/QT_NTF_010_NotifyGlass.mp3,"Subtle messages, badges and notifications",MIT
+QT_SUC_001,SuccessSoft,Success,النجاح والإتمام,850,48000,24,1,-15.0,audio/Success/QT_SUC_001_SuccessSoft.wav,audio/Success/QT_SUC_001_SuccessSoft.mp3,"Save, complete, confirmation and positive states",MIT
+QT_SUC_002,Complete,Success,النجاح والإتمام,850,48000,24,1,-15.0,audio/Success/QT_SUC_002_Complete.wav,audio/Success/QT_SUC_002_Complete.mp3,"Save, complete, confirmation and positive states",MIT
+QT_SUC_003,Confirmed,Success,النجاح والإتمام,850,48000,24,1,-15.0,audio/Success/QT_SUC_003_Confirmed.wav,audio/Success/QT_SUC_003_Confirmed.mp3,"Save, complete, confirmation and positive states",MIT
+QT_SUC_004,Done,Success,النجاح والإتمام,850,48000,24,1,-15.0,audio/Success/QT_SUC_004_Done.wav,audio/Success/QT_SUC_004_Done.mp3,"Save, complete, confirmation and positive states",MIT
+QT_SUC_005,SuccessTick,Success,النجاح والإتمام,850,48000,24,1,-15.0,audio/Success/QT_SUC_005_SuccessTick.wav,audio/Success/QT_SUC_005_SuccessTick.mp3,"Save, complete, confirmation and positive states",MIT
+QT_SUC_006,SuccessChime,Success,النجاح والإتمام,850,48000,24,1,-15.0,audio/Success/QT_SUC_006_SuccessChime.wav,audio/Success/QT_SUC_006_SuccessChime.mp3,"Save, complete, confirmation and positive states",MIT
+QT_SUC_007,UploadDone,Success,النجاح والإتمام,850,48000,24,1,-15.0,audio/Success/QT_SUC_007_UploadDone.wav,audio/Success/QT_SUC_007_UploadDone.mp3,"Save, complete, confirmation and positive states",MIT
+QT_SUC_008,Saved,Success,النجاح والإتمام,850,48000,24,1,-15.0,audio/Success/QT_SUC_008_Saved.wav,audio/Success/QT_SUC_008_Saved.mp3,"Save, complete, confirmation and positive states",MIT
+QT_SUC_009,Ready,Success,النجاح والإتمام,850,48000,24,1,-15.0,audio/Success/QT_SUC_009_Ready.wav,audio/Success/QT_SUC_009_Ready.mp3,"Save, complete, confirmation and positive states",MIT
+QT_SUC_010,Positive,Success,النجاح والإتمام,850,48000,24,1,-15.0,audio/Success/QT_SUC_010_Positive.wav,audio/Success/QT_SUC_010_Positive.mp3,"Save, complete, confirmation and positive states",MIT
+QT_ALT_001,ErrorSoft,Alerts,التنبيه والتراجع,380,48000,24,1,-15.0,audio/Alerts/QT_ALT_001_ErrorSoft.wav,audio/Alerts/QT_ALT_001_ErrorSoft.mp3,"Muted errors, cancel, retry and warning states",MIT
+QT_ALT_002,WarningSoft,Alerts,التنبيه والتراجع,398,48000,24,1,-15.0,audio/Alerts/QT_ALT_002_WarningSoft.wav,audio/Alerts/QT_ALT_002_WarningSoft.mp3,"Muted errors, cancel, retry and warning states",MIT
+QT_ALT_003,MutedError,Alerts,التنبيه والتراجع,416,48000,24,1,-15.0,audio/Alerts/QT_ALT_003_MutedError.wav,audio/Alerts/QT_ALT_003_MutedError.mp3,"Muted errors, cancel, retry and warning states",MIT
+QT_ALT_004,BackOut,Alerts,التنبيه والتراجع,434,48000,24,1,-15.0,audio/Alerts/QT_ALT_004_BackOut.wav,audio/Alerts/QT_ALT_004_BackOut.mp3,"Muted errors, cancel, retry and warning states",MIT
+QT_ALT_005,Cancel,Alerts,التنبيه والتراجع,452,48000,24,1,-15.0,audio/Alerts/QT_ALT_005_Cancel.wav,audio/Alerts/QT_ALT_005_Cancel.mp3,"Muted errors, cancel, retry and warning states",MIT
+QT_ALT_006,Denied,Alerts,التنبيه والتراجع,470,48000,24,1,-15.0,audio/Alerts/QT_ALT_006_Denied.wav,audio/Alerts/QT_ALT_006_Denied.mp3,"Muted errors, cancel, retry and warning states",MIT
+QT_ALT_007,Retry,Alerts,التنبيه والتراجع,488,48000,24,1,-15.0,audio/Alerts/QT_ALT_007_Retry.wav,audio/Alerts/QT_ALT_007_Retry.mp3,"Muted errors, cancel, retry and warning states",MIT
+QT_ALT_008,Offline,Alerts,التنبيه والتراجع,506,48000,24,1,-15.0,audio/Alerts/QT_ALT_008_Offline.wav,audio/Alerts/QT_ALT_008_Offline.mp3,"Muted errors, cancel, retry and warning states",MIT
+QT_ALT_009,Caution,Alerts,التنبيه والتراجع,524,48000,24,1,-15.0,audio/Alerts/QT_ALT_009_Caution.wav,audio/Alerts/QT_ALT_009_Caution.mp3,"Muted errors, cancel, retry and warning states",MIT
+QT_ALT_010,Negative,Alerts,التنبيه والتراجع,542,48000,24,1,-15.0,audio/Alerts/QT_ALT_010_Negative.wav,audio/Alerts/QT_ALT_010_Negative.mp3,"Muted errors, cancel, retry and warning states",MIT
+QT_KEY_001,KeyTap,Keyboard,لوحة المفاتيح,130,48000,24,1,-15.0,audio/Keyboard/QT_KEY_001_KeyTap.wav,audio/Keyboard/QT_KEY_001_KeyTap.mp3,"Keyboard, typing and editing sequences",MIT
+QT_KEY_002,KeySoft,Keyboard,لوحة المفاتيح,138,48000,24,1,-15.0,audio/Keyboard/QT_KEY_002_KeySoft.wav,audio/Keyboard/QT_KEY_002_KeySoft.mp3,"Keyboard, typing and editing sequences",MIT
+QT_KEY_003,KeyThock,Keyboard,لوحة المفاتيح,146,48000,24,1,-15.0,audio/Keyboard/QT_KEY_003_KeyThock.wav,audio/Keyboard/QT_KEY_003_KeyThock.mp3,"Keyboard, typing and editing sequences",MIT
+QT_KEY_004,KeyClick,Keyboard,لوحة المفاتيح,154,48000,24,1,-15.0,audio/Keyboard/QT_KEY_004_KeyClick.wav,audio/Keyboard/QT_KEY_004_KeyClick.mp3,"Keyboard, typing and editing sequences",MIT
+QT_KEY_005,Spacebar,Keyboard,لوحة المفاتيح,162,48000,24,1,-15.0,audio/Keyboard/QT_KEY_005_Spacebar.wav,audio/Keyboard/QT_KEY_005_Spacebar.mp3,"Keyboard, typing and editing sequences",MIT
+QT_KEY_006,EnterKey,Keyboard,لوحة المفاتيح,170,48000,24,1,-15.0,audio/Keyboard/QT_KEY_006_EnterKey.wav,audio/Keyboard/QT_KEY_006_EnterKey.mp3,"Keyboard, typing and editing sequences",MIT
+QT_KEY_007,Backspace,Keyboard,لوحة المفاتيح,178,48000,24,1,-15.0,audio/Keyboard/QT_KEY_007_Backspace.wav,audio/Keyboard/QT_KEY_007_Backspace.mp3,"Keyboard, typing and editing sequences",MIT
+QT_KEY_008,KeySequence,Keyboard,لوحة المفاتيح,650,48000,24,1,-15.0,audio/Keyboard/QT_KEY_008_KeySequence.wav,audio/Keyboard/QT_KEY_008_KeySequence.mp3,"Keyboard, typing and editing sequences",MIT
+QT_KEY_009,TypingBurst,Keyboard,لوحة المفاتيح,650,48000,24,1,-15.0,audio/Keyboard/QT_KEY_009_TypingBurst.wav,audio/Keyboard/QT_KEY_009_TypingBurst.mp3,"Keyboard, typing and editing sequences",MIT
+QT_KEY_010,NumpadTick,Keyboard,لوحة المفاتيح,650,48000,24,1,-15.0,audio/Keyboard/QT_KEY_010_NumpadTick.wav,audio/Keyboard/QT_KEY_010_NumpadTick.mp3,"Keyboard, typing and editing sequences",MIT
+QT_TRN_001,SceneIn,Transitions,الانتقالات,480,48000,24,2,-15.0,audio/Transitions/QT_TRN_001_SceneIn.wav,audio/Transitions/QT_TRN_001_SceneIn.mp3,"Scene changes, macro transitions and logo outro",MIT
+QT_TRN_002,SceneOut,Transitions,الانتقالات,525,48000,24,2,-15.0,audio/Transitions/QT_TRN_002_SceneOut.wav,audio/Transitions/QT_TRN_002_SceneOut.mp3,"Scene changes, macro transitions and logo outro",MIT
+QT_TRN_003,DeepMacro,Transitions,الانتقالات,570,48000,24,2,-15.0,audio/Transitions/QT_TRN_003_DeepMacro.wav,audio/Transitions/QT_TRN_003_DeepMacro.mp3,"Scene changes, macro transitions and logo outro",MIT
+QT_TRN_004,SoftCut,Transitions,الانتقالات,615,48000,24,2,-15.0,audio/Transitions/QT_TRN_004_SoftCut.wav,audio/Transitions/QT_TRN_004_SoftCut.mp3,"Scene changes, macro transitions and logo outro",MIT
+QT_TRN_005,RevealUp,Transitions,الانتقالات,660,48000,24,2,-15.0,audio/Transitions/QT_TRN_005_RevealUp.wav,audio/Transitions/QT_TRN_005_RevealUp.mp3,"Scene changes, macro transitions and logo outro",MIT
+QT_TRN_006,RevealDown,Transitions,الانتقالات,705,48000,24,2,-15.0,audio/Transitions/QT_TRN_006_RevealDown.wav,audio/Transitions/QT_TRN_006_RevealDown.mp3,"Scene changes, macro transitions and logo outro",MIT
+QT_TRN_007,FocusIn,Transitions,الانتقالات,750,48000,24,2,-15.0,audio/Transitions/QT_TRN_007_FocusIn.wav,audio/Transitions/QT_TRN_007_FocusIn.mp3,"Scene changes, macro transitions and logo outro",MIT
+QT_TRN_008,FocusOut,Transitions,الانتقالات,795,48000,24,2,-15.0,audio/Transitions/QT_TRN_008_FocusOut.wav,audio/Transitions/QT_TRN_008_FocusOut.mp3,"Scene changes, macro transitions and logo outro",MIT
+QT_TRN_009,LoopSettle,Transitions,الانتقالات,840,48000,24,2,-15.0,audio/Transitions/QT_TRN_009_LoopSettle.wav,audio/Transitions/QT_TRN_009_LoopSettle.mp3,"Scene changes, macro transitions and logo outro",MIT
+QT_TRN_010,LogoClick,Transitions,الانتقالات,885,48000,24,2,-15.0,audio/Transitions/QT_TRN_010_LogoClick.wav,audio/Transitions/QT_TRN_010_LogoClick.mp3,"Scene changes, macro transitions and logo outro",MIT

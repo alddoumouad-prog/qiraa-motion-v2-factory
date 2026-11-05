@@ -1,0 +1,17 @@
+{
+  "version": "gold-v2-1",
+  "description": "Fixed Qiraa Motion V2 golden sample sound map. Times are seconds; card and micro events use the spec's verified start times.",
+  "peak_dbfs_each_before_master": -15.0,
+  "events": [
+    {"asset": "QT_TXT_001_TextReveal", "at": 0.05},
+    {"asset": "QT_TXT_001_TextReveal", "at": 0.17},
+    {"asset": "QT_TXT_001_TextReveal", "at": 0.29},
+    {"asset": "QT_CRD_005_BentoIn", "at": 0.65},
+    {"asset": "QT_CRD_005_BentoIn", "at": "each_card_start"},
+    {"asset": "QT_TAP_003_CrispTap", "at": "each_micro_start"},
+    {"asset": "QT_TRN_010_LogoClick", "at": 23.50},
+    {"asset": "QT_TAP_003_CrispTap", "at": 23.85},
+    {"asset": "QT_TAP_003_CrispTap", "at": 24.50},
+    {"asset": "QT_TAP_003_CrispTap", "at": 25.15}
+  ]
+}
