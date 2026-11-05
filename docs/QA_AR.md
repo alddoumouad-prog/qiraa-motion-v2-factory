@@ -22,4 +22,4 @@ python -m unittest discover -s tests -v
 python factory/pipeline.py --validate-only --spec spec.json
 ```
 
-تم اختبار إنتاج النموذج محليًا وتشغيل نسخة سابقة من سير الإنتاج الأساسي على GitHub Actions؛ راجع تقرير الإصدار. نجح أيضًا اختبار رندر لمصدر ثانٍ في بيئة محلية دون GitHub Token. تحديث الهوية وElevenLabs الجديد لم يُختبر بعد على GitHub أو على حساب ElevenLabs حقيقي؛ يلزم فحص كل نتيجة جديدة على حدة.
+تم اختبار إنتاج النموذج محليًا ونجح سير الإنتاج الذهبي على GitHub Actions في نسخة سابقة، ونجح رندر مصدر ثانٍ محليًا دون GitHub Token. دعم ElevenLabs لم يُختبر بحساب حقيقي؛ يلزم فحص كل نتيجة جديدة على حدة.

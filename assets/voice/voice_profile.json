@@ -1,11 +1,11 @@
 {
-  "profile_id": "qiraa-motion-v2-voice-01",
-  "reference_audio": "assets/voice/approved_audition_reference.mp3",
-  "reference_audio_origin": "Three narration clips from the voice selected in the original Arena session; supplied for listening and comparison, not a portable voice model.",
-  "production_voice_id_status": "not_configured",
-  "approved_provider_for_new_scripts": null,
-  "voice_design_description_en": "A clear, natural Arabic news and documentary voice, warm and composed, with a confident medium-register delivery. Speak Modern Standard Arabic clearly, with natural phrasing and brief pauses, articulate consonants, and gently emphasize the key idea without shouting or theatrical advertising. Close and clean studio sound, no background noise or music.",
-  "performance_direction_ar": "صوت عربي فصيح واضح، قريب وهادئ وواثق، بإيقاع إخباري حيوي غير مسرحي. جمل قصيرة ونَفَس طبيعي ووقفات خفيفة، مع إبراز لطيف للكلمات المهمة وبدون صراخ أو مؤثرات على التعليق الرئيسي.",
+  "profile_id": "qiraa-motion-v2-voice-03",
+  "reference_audio": "assets/voice/production_voice_reference.mp3",
+  "reference_audio_origin": "A newly generated sample using the originally selected Arena voice-00 in the same session, with the fixed vocal processing applied.",
+  "production_voice_id_status": "arena_session_only",
+  "approved_provider_for_new_scripts": "agent_pre_recorded",
+  "voice_design_description_en": "A clear, natural feminine Arabic news and documentary voice, warm and composed, with a confident medium-register delivery. Speak Modern Standard Arabic clearly, with natural phrasing and brief pauses, articulate consonants, and gently emphasize the key idea without shouting or theatrical advertising. Close and clean studio sound, no background noise or music.",
+  "performance_direction_ar": "صوت نسائي عربي فصيح واضح، قريب وهادئ وواثق، بإيقاع إخباري حيوي غير مسرحي. جمل قصيرة ونَفَس طبيعي ووقفات خفيفة، مع إبراز لطيف للكلمات المهمة وبدون صراخ أو مؤثرات على التعليق الرئيسي.",
   "elevenlabs_settings": {
     "model_id": "eleven_multilingual_v2",
     "stability": 0.5,
@@ -14,6 +14,13 @@
     "use_speaker_boost": true,
     "speed": 1.0
   },
-  "micro_commentary_filter_hz": [350, 3000],
-  "important": "The description is guidance and does not reproduce the selected voice or grant voice-cloning rights. A separately approved persistent provider voice ID is required for consistent new scripts. Do not silently substitute voices."
+  "micro_commentary_filter_hz": [
+    350,
+    3000
+  ],
+  "important": "The agent must use the originally selected voice if available and generate five new clips; an Arena voice ID is not portable across sessions. The reference audio is for listening only, not a portable voice model. Different underlying speakers cannot be made identical by equalization or compression. Do not substitute.",
+  "previous_arena_reference_audio": "assets/voice/approved_audition_reference.mp3",
+  "voice_processing_filter": "highpass=f=80,equalizer=f=250:t=q:w=1:g=-1.5,equalizer=f=3000:t=q:w=1:g=1.2,acompressor=threshold=0.125:ratio=2:attack=12:release=120:makeup=1",
+  "arena_session_voice_id": "voice-00",
+  "voice_id_portability": "The same ID is only valid within its registered Arena session; it must not be assumed identical or available in a new chat."
 }

@@ -4,7 +4,7 @@
   "files": {
     "factory/render_motion.py": "ff3665f576356ea280b57a2316afc235aca244a79ab54801518900703c46be08",
     "factory/classic_renderer.py": "15c10ae0dab15483b6ef179828982beb64b5978ef3ec60cc2ccad42b77196ccf",
-    "factory/pipeline.py": "7248336708a4d4b99b2daffbed3dfd8d0218a161e028db39e9cbfd8642351dd1",
+    "factory/pipeline.py": "172122fde6f0598f9f047be48128848d89b480d279169dcac6a46eb8fab20096",
     "factory/brand_lock.py": "77cb49ef7e068bb1053f4a62dc6d5a711007eb53a83a3d161ab7f62fbc720ee6",
     "assets/brand/Cairo.ttf": "667c987182391c91f4e57a2f455b1794fb5e3ee6ca4ef3383e86bb690fa9c964",
     "assets/brand/Inter.ttf": "29160a80ff49ddcab2c97711247e08b1fab27a484a329ce8b813d820dc559031",
@@ -20,12 +20,13 @@
     "assets/sfx/QT_TXT_001_TextReveal.wav": "5f0f14436137499f5d5e3f5cc7420aa882149c29a5fc98a964f46c4f93cafb3c",
     "assets/sfx/recipe_motion_v2.json": "54e69865807b1fbdb8332bc0692cba167a6ee7190de55c77365f2fda1b83dbbc",
     "assets/voice/approved_audition_reference.mp3": "1377fdccc737f7ca746583bb960b9699d6ec43ab2f3ed5e3cf7f94c08c22f728",
-    "assets/voice/voice_profile.json": "4fd60505cb48274cfa7374f8eebd2a98fe3734acee4f3f2701fb2115f30bc779",
+    "assets/voice/voice_profile.json": "5415e31eee6068125296952437b9615f674173a46bf1e50a04535bc011d46c0e",
     "assets/reference/motion_v2_golden_layout.jpg": "708e51ae7b73b17aeab6bace310bb6ad84b31ea299a1f4a0208c3ec26663432d",
     "examples/space/audio/micro_01.mp3": "945694d66562530613f4c78167ea9508afbb34c861117febdbe91421012dfe3e",
     "examples/space/audio/micro_02.mp3": "cdb909da2d7d80b8934df3ab52a95c151d519b44634f08e3b1587850fc4021b1",
     "examples/space/audio/narration_a.mp3": "e97a88264f8d60483b06838ada6e71ab3838408008adc1cc4ac454c710660488",
     "examples/space/audio/narration_b2.mp3": "62f5cae88bcdade231d47eb6f5a5497ba9345ca1a7643b298f09486ff8a7ebac",
-    "examples/space/audio/narration_c2.mp3": "095e64ca024569be6d7c89f19324ee012ea1fa2f8907084ab689b004e6beb74f"
+    "examples/space/audio/narration_c2.mp3": "095e64ca024569be6d7c89f19324ee012ea1fa2f8907084ab689b004e6beb74f",
+    "assets/voice/production_voice_reference.mp3": "88de2f28a040f4c51ab5d3c4fcde6ddc176b2e66bf03a7c8be4ea0458b9c2b6a"
   }
 }

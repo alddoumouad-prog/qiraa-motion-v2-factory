@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Build a reviewable 28-second Motion V2 draft. All paths are relative to repository root."""
 from __future__ import annotations
-import argparse, asyncio, hashlib, json, math, os, re, shutil, subprocess, sys
+import argparse, hashlib, json, math, os, re, shutil, subprocess, sys
 import urllib.request, urllib.error
 from pathlib import Path
 import cv2
@@ -20,6 +20,9 @@ TRIM='silenceremove=start_periods=1:start_threshold=-45dB:start_silence=0.03,are
 sys.path.insert(0,str(ROOT/'factory'))
 import render_motion
 import brand_lock
+
+VOICE_PROFILE=json.loads((ROOT/'assets/voice/voice_profile.json').read_text(encoding='utf-8'))
+VOICE_FILTER=VOICE_PROFILE['voice_processing_filter']
 
 
 def fail(message):raise ValueError(message)
@@ -40,7 +43,8 @@ def load_spec(path):
     if not 0<=float(s['source_offset_seconds'])<=86400:fail('Invalid source offset')
     if len(s['headline_lines'])!=3 or len(s['cards'])!=4 or len(s['narration'])!=3 or len(s['micro'])!=2:fail('Require exactly 3 headline lines, 4 cards, 3 narration clips, and 2 micro clips')
     if not re.fullmatch(r'\d{2}\.\d{2}\.\d{4}',s['date']):fail('date must be DD.MM.YYYY')
-    if s['tts']['provider'] not in ('pre_recorded','edge','elevenlabs'):fail('tts.provider must be pre_recorded, elevenlabs or an explicitly approved edge fallback')
+    if s['tts']['provider'] not in ('pre_recorded','elevenlabs'):
+        fail('tts.provider must be pre_recorded for agent-generated approved voice clips, or elevenlabs only with an approved same-identity voice')
     if not isinstance(s['editorial_review'].get('facts_verified'),bool) or not isinstance(s['editorial_review'].get('source_permission_confirmed'),bool):fail('Editorial review fields must be booleans')
     if not s['editorial_review']['facts_verified']:fail('Editorial facts must be verified before rendering')
     if not s['editorial_review']['source_permission_confirmed']:print('WARNING: source rights are NOT confirmed; output is a draft only',flush=True)
@@ -122,11 +126,6 @@ def add(dst,x,start):
     i=round(start*SR);n=min(len(x),len(dst)-i)
     if n>0:dst[i:i+n]+=x[:n,None] if x.ndim==1 else x[:n]
 
-async def synthesize_edge(text,path,voice):
-    import edge_tts
-    await edge_tts.Communicate(text,voice=voice).save(str(path))
-
-
 def synthesize_elevenlabs(text,path):
     """Use a pre-approved voice ID; never log, commit or embed the API key."""
     api_key=os.environ.get('ELEVENLABS_API_KEY','').strip()
@@ -158,9 +157,6 @@ def generate_mix(s,source):
                 if not e.get('audio_file'):fail('pre_recorded clip requires audio_file')
                 path=local_path(e['audio_file'])
                 if not path.is_file():fail('Missing prerecorded audio: '+str(path))
-            elif s['tts']['provider']=='edge':
-                path=audio_dir/(e['id']+'.mp3')
-                asyncio.run(synthesize_edge(e['text'],path,s['tts'].get('fallback_voice','ar-MA-JamalNeural')))
             else:
                 path=audio_dir/(e['id']+'.mp3')
                 synthesize_elevenlabs(e['text'],path)
@@ -173,7 +169,7 @@ def generate_mix(s,source):
             # Re-measure and adjust slightly rather than clipping spoken words.
             for attempt in range(3):
                 if tempo>1.6:fail(f"{e['id']} needs {tempo:.2f}x speed; shorten text or expand its window")
-                fil=TRIM+f',atempo={tempo:.8f}'
+                fil=TRIM+f',atempo={tempo:.8f},'+VOICE_FILTER
                 if kind=='micro':fil+=',highpass=f=350,lowpass=f=3000'
                 x=norm(decode(path,1,fil),-5 if kind=='micro' else -3)
                 actual=len(x)/SR
@@ -240,6 +236,11 @@ def qa(s,video,events,source_audio_status,sfx_events):
     p=run([FF,'-hide_banner','-nostats','-i',video,'-map','0:a:0','-af','ebur128=peak=true','-f','null','-'],capture_output=True,text=True)
     (OUTPUT/'loudness.txt').write_text(p.stderr[-4000:],encoding='utf-8')
     report={'project_id':s['project_id'],'brand_profile':'qiraa-motion-v2-golden-1','frames':frames,'fps':fps,'width':width,'height':height,'duration_seconds':frames/fps,'source_audio_status':source_audio_status,'voice_provider':s['tts']['provider'],'voice_id_fingerprint':hashlib.sha256(os.environ.get('ELEVENLABS_VOICE_ID','').encode()).hexdigest()[:16] if s['tts']['provider']=='elevenlabs' and os.environ.get('ELEVENLABS_VOICE_ID') else None,'audio_events':events,'sfx_events':[{'asset':name,'start':start} for name,start in sfx_events],'video_sha256':hashlib.sha256(video.read_bytes()).hexdigest(),'facts_verified_by_editor':s['editorial_review']['facts_verified'],'source_permission_confirmed':s['editorial_review']['source_permission_confirmed'],'publication_status':'DRAFT — visual, listening, factual, permission and platform review required','automatic_checks':['full decode','dimensions','duration','audio windows','anchor in transcript','contact sheet'],'not_automatic':['meaning, truth and context','rights and permission','human visual/audio review','social-media publication']}
+    report['voice_profile']=VOICE_PROFILE['profile_id']
+    report['voice_id']=None # A prerecorded file does not reveal or prove the model or speaker identity.
+    report['voice_processing_filter']=VOICE_FILTER
+    report['voice_identity_caveat']='Pre-recorded clip identity is not automatically verified' if s['tts']['provider']=='pre_recorded' else 'Provider voice may change or become unavailable; review by ear'
+    report['speech_tempo_review']=[e['id'] for e in events if e['tempo']>1.25]
     (OUTPUT/'qa_report.json').write_text(json.dumps(report,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
     shutil.copy2(local_path(s['transcript_file']),OUTPUT/'transcript_words.json')
     (OUTPUT/'used_spec.json').write_text(json.dumps(s,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')

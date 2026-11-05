@@ -87,8 +87,7 @@
     }
   ],
   "tts": {
-    "provider": "pre_recorded",
-    "fallback_voice": "ar-MA-JamalNeural"
+    "provider": "pre_recorded"
   },
   "editorial_review": {
     "facts_verified": true,
