@@ -5,21 +5,29 @@ All layouts reuse the approved logo, wordmark, type, palette, SFX and timing
 contract. Face analysis is heuristic and is not a guarantee of safe framing.
 """
 from pathlib import Path
-import subprocess
+import subprocess,time
 import cv2
 from PIL import Image,ImageDraw,ImageOps
 import render_motion as golden
 import framing
+import outro_cache
 
 base=golden.base
 W,H,FPS,DURATION,SOURCE_END,FRAMES=golden.W,golden.H,golden.FPS,golden.DURATION,golden.SOURCE_END,golden.FRAMES
 RED,IVORY,GREEN,GREEN_2=golden.RED,golden.IVORY,golden.GREEN,golden.GREEN_2
 
+class GoldenMain(golden.MotionSpace):
+    """Only the story portion is rendered; the outro is a reusable asset."""
+    def make_outro(self):return None
+
 class AdaptiveMotion(golden.MotionSpace):
-    def __init__(self,source,content,brand,plan,analysis):
-        self.plan=plan;self.analysis=analysis;self.mode=plan['mode']
+    def __init__(self,source,content,brand,plan,analysis,main_only=False):
+        self.plan=plan;self.analysis=analysis;self.mode=plan['mode'];self.main_only=main_only
         self.crop_x=float(analysis['crop_centering_x']);self.card_position=analysis['card_position']
         super().__init__(source,content,brand)
+
+    def make_outro(self):
+        return None if self.main_only else super().make_outro()
 
     def fitted(self,t):
         src=self.src.get(t);crop_x=framing.centering_at(t,self.analysis.get('crop_track',[]),self.crop_x)
@@ -138,10 +146,10 @@ class AdaptiveMotion(golden.MotionSpace):
         return self.finish(im,t)
 
 
-def make_renderer(source,content,plan,analysis):
+def make_renderer(source,content,plan,analysis,main_only=False):
     if plan['mode']=='golden' and plan['crop']=='center' and analysis['crop_centering_x']==.5 and analysis['card_position']=='lower':
-        r=golden.make_renderer(source,content)
-    else:r=AdaptiveMotion(source,content,golden.ROOT/'assets/brand',plan,analysis)
+        r=GoldenMain(source,content,golden.ROOT/'assets/brand') if main_only else golden.make_renderer(source,content)
+    else:r=AdaptiveMotion(source,content,golden.ROOT/'assets/brand',plan,analysis,main_only=main_only)
     r.credit=r.make_credit()
     return r
 
@@ -152,17 +160,23 @@ def preflight(renderer,content):
     # No guarantee of detecting face occlusion or every font/codec issue.
 
 def picture(outdir,source,content,plan,analysis):
-    outdir=Path(outdir);outdir.mkdir(parents=True,exist_ok=True);r=make_renderer(source,content,plan,analysis)
+    outdir=Path(outdir);outdir.mkdir(parents=True,exist_ok=True)
+    info=outro_cache.check_asset();started=time.monotonic()
+    r=make_renderer(source,content,plan,analysis,main_only=True)
     try:
         preflight(r,content)
-        ff=golden.ffmpeg();silent=outdir/'picture.mp4'
-        cmd=[ff,'-y','-hide_banner','-loglevel','warning','-f','rawvideo','-pix_fmt','rgb24','-s',f'{W}x{H}','-r',str(FPS),'-i','-','-an','-c:v','libx264','-preset','fast','-crf','18','-pix_fmt','yuv420p','-movflags','+faststart',str(silent)]
+        ff=golden.ffmpeg();main=outdir/'picture_main.mp4'
+        cmd=[ff,'-y','-hide_banner','-loglevel','warning','-f','rawvideo','-pix_fmt','rgb24','-s',f'{W}x{H}','-r',str(FPS),'-i','-','-an','-c:v','libx264','-preset','fast','-crf','18','-pix_fmt','yuv420p','-movflags','+faststart',str(main)]
         proc=subprocess.Popen(cmd,stdin=subprocess.PIPE)
         try:
-            for n in range(FRAMES):
+            for n in range(outro_cache.MAIN_FRAMES):
                 proc.stdin.write(r.render(n/FPS).tobytes())
-                if n%120==0:print(f'Render {n}/{FRAMES}',flush=True)
+                if n%120==0:print(f'Render story {n}/{outro_cache.MAIN_FRAMES}',flush=True)
         finally:proc.stdin.close()
         if proc.wait():raise RuntimeError('Video encoding failed')
     finally:r.src.close()
-    print(silent,flush=True)
+    concat_start=time.monotonic();silent=outro_cache.concat(main,outro_cache.OUTRO,outdir/'picture.mp4')
+    info.update({'story_frames_rendered':outro_cache.MAIN_FRAMES,'outro_frames_rendered_per_video':0,
+                 'concat_seconds':round(time.monotonic()-concat_start,3),'picture_total_seconds':round(time.monotonic()-started,3)})
+    print('Appended pre-rendered outro with stream copy:',silent,flush=True)
+    return info

@@ -225,7 +225,7 @@ def generate_mix(s,source):
     return events,source_audio_status,fx
 
 
-def qa(s,video,events,source_audio_status,sfx_events,plan,frame_analysis):
+def qa(s,video,events,source_audio_status,sfx_events,plan,frame_analysis,outro_info):
     run([FF,'-v','error','-i',video,'-f','null','-'])
     cap=cv2.VideoCapture(str(video));fps=cap.get(cv2.CAP_PROP_FPS);frames=int(cap.get(cv2.CAP_PROP_FRAME_COUNT));width=int(cap.get(cv2.CAP_PROP_FRAME_WIDTH));height=int(cap.get(cv2.CAP_PROP_FRAME_HEIGHT));cap.release()
     if (width,height,frames,round(fps,3))!=(1080,1920,840,30.0):fail('Output format mismatch')
@@ -248,6 +248,7 @@ def qa(s,video,events,source_audio_status,sfx_events,plan,frame_analysis):
     report['brand_release']=json.loads((ROOT/'assets/brand/brand_manifest.json').read_text(encoding='utf-8')).get('release_id','legacy')
     report['speech_tempo_review']=[e['id'] for e in events if e['tempo']>1.25]
     report['creative_plan']=plan
+    report['outro_reuse']=outro_info
     report['framing']=frame_analysis
     report['automatic_checks'].extend(['creative plan validation','sampled face-aware framing warnings'])
     report['not_automatic'].append('all-frame face, caption and logo occlusion detection')
@@ -277,10 +278,10 @@ def main():
     print('Framing:',frame_analysis['crop_reason'],'cards:',frame_analysis['card_position'],flush=True)
     for warning in frame_analysis['warnings']:print('FRAMING WARNING:',warning,flush=True)
     events,source_audio_status,sfx_events=generate_mix(s,source)
-    adaptive_motion.picture(WORK,source,s,plan,frame_analysis)
+    outro_info=adaptive_motion.picture(WORK,source,s,plan,frame_analysis)
     video=OUTPUT/(s['project_id']+'_Motion_V2.mp4')
     run([FF,'-y','-hide_banner','-loglevel','error','-i',WORK/'picture.mp4','-i',WORK/'mix_master.wav','-map','0:v:0','-map','1:a:0','-c:v','copy','-c:a','aac','-b:a','192k','-ar',str(SR),'-t',str(DURATION),'-movflags','+faststart',video])
-    qa(s,video,events,source_audio_status,sfx_events,plan,frame_analysis)
+    qa(s,video,events,source_audio_status,sfx_events,plan,frame_analysis,outro_info)
     print('\nDELIVERABLE:',video,flush=True)
 
 if __name__=='__main__':

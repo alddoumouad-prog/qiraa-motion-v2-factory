@@ -1,10 +1,10 @@
 {
   "profile_id": "qiraa-motion-v2-golden-1",
-  "description": "Approved golden Motion V2 baseline and bounded creative layouts; update only with owner consent. Hashes ensure reproducibility, not a security boundary.",
+  "description": "Approved golden Motion V2 baseline, creative layouts and reusable outro; update only with owner consent. Hashes ensure reproducibility, not a security boundary.",
   "files": {
     "factory/render_motion.py": "ff3665f576356ea280b57a2316afc235aca244a79ab54801518900703c46be08",
     "factory/classic_renderer.py": "15c10ae0dab15483b6ef179828982beb64b5978ef3ec60cc2ccad42b77196ccf",
-    "factory/pipeline.py": "c804bea9379029e9005eb1ab4d6b0217ef5a0b0a9f5bcaa8007909b27612dea2",
+    "factory/pipeline.py": "8de872b85cdab769947d6543f5964663980ca13df707562993c754cab193d6f7",
     "factory/brand_lock.py": "77cb49ef7e068bb1053f4a62dc6d5a711007eb53a83a3d161ab7f62fbc720ee6",
     "assets/brand/Cairo.ttf": "667c987182391c91f4e57a2f455b1794fb5e3ee6ca4ef3383e86bb690fa9c964",
     "assets/brand/Inter.ttf": "29160a80ff49ddcab2c97711247e08b1fab27a484a329ce8b813d820dc559031",
@@ -31,8 +31,11 @@
     "docs/دستور_الصوت_الاحترافي.md": "e7ea4d483563875cc5103c6f548ed6ef7e3824ecfec323b77d731ce353e0f9ac",
     "factory/creative_plan.py": "9b351ae6c7c6df5f613c3eec0edad3d619bb00e8701af62ac98584a967c5c363",
     "factory/framing.py": "2ada008bd98e2880cfe897cf90e8ac7a06f8031997b8fa5b409390f56fb718d7",
-    "factory/adaptive_motion.py": "d752010cc4d317b97a7b9548afb534ea45bf19f63118ec1671cc058618101af4",
-    "spec.schema.json": "bb955b950b6dd0227acece67d47c34783e109058b1cf5993ba9de0cd1c017e49"
+    "factory/adaptive_motion.py": "2b1939fd4fd4668a5b19b2a9d35949882299f211335d8e8fd00acc830e8d45e1",
+    "spec.schema.json": "bb955b950b6dd0227acece67d47c34783e109058b1cf5993ba9de0cd1c017e49",
+    "factory/outro_cache.py": "543907d122e4d9512c0bbbd0798d9bbfd3b788d2ce1b5d1196848478bbed29c9",
+    "factory/build_outro.py": "9659e863e41c4d10e6ec50c06c8ee7638f73a997582fc9b3f5a94afe03c9be9f",
+    "assets/outro/motion_v2_golden_outro.mp4": "82fd543614050908a8b8b3f6af504ce87e4540bad6f0cb128a7dfb1eef78e34a"
   },
-  "release_id": "qiraa-motion-v2-creative-2026-11-06"
+  "release_id": "qiraa-motion-v2-prebuilt-outro-2026-11-06"
 }

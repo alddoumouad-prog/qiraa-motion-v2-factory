@@ -67,6 +67,13 @@ class TestCreativeRenderer(unittest.TestCase):
             for t in (.15,1.35,3.0,8.2,21.9,26.2):
                 with self.subTest(t=t):self.assertTrue(np.array_equal(np.array(original.render(t)),np.array(new.render(t))))
         finally:original.src.close();new.src.close()
+    def test_main_only_golden_renders_same_story_without_building_outro(self):
+        original=render_motion.make_renderer(self.source,self.spec);original.credit=original.make_credit()
+        main=adaptive_motion.make_renderer(self.source,self.spec,creative_plan.validate(self.spec),self.analysis(),main_only=True)
+        try:
+            self.assertIsNone(main.outro)
+            for t in (.15,1.35,8.2):self.assertTrue(np.array_equal(np.array(original.render(t)),np.array(main.render(t))))
+        finally:original.src.close();main.src.close()
     def test_new_layouts_are_visibly_distinct_and_keep_brand_asset(self):
         arrays=[]
         for mode in ('quote','scene','context'):
