@@ -17,6 +17,7 @@
     "micro": {"type":"array", "minItems":2, "maxItems":2, "items":{"$ref":"#/$defs/micro"}},
     "transcript_file": {"type":"string", "minLength":1},
     "tts": {"type":"object", "required":["provider"], "properties":{"provider":{"enum":["pre_recorded","elevenlabs"]}}},
+    "creative": {"type":"object", "required":["mode"], "additionalProperties":false, "properties":{"mode":{"enum":["golden","auto","quote","scene","context"]},"angle":{"type":"string","minLength":10,"maxLength":240},"reason":{"type":"string","minLength":5,"maxLength":300},"hook_type":{"enum":["fact","question","quote","contrast","visual","explainer"]},"crop":{"enum":["center","auto","left","right"]},"card_position":{"enum":["auto","upper","lower"]}},"allOf":[{"if":{"properties":{"mode":{"enum":["auto","quote","scene","context"]}},"required":["mode"]},"then":{"required":["angle","reason","hook_type"]}}]},
     "editorial_review": {"type":"object", "required":["facts_verified","source_permission_confirmed"], "properties":{"facts_verified":{"type":"boolean"}, "source_permission_confirmed":{"type":"boolean"}, "notes":{"type":"string"}}}
   },
   "$defs": {

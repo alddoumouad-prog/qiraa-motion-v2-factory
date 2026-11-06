@@ -24,6 +24,8 @@ jobs:
           cache: pip
       - name: Install dependencies
         run: python -m pip install -r requirements.txt
+      - name: Run factory tests
+        run: python -m unittest discover -s tests -v
       - name: Validate specification
         env:
           SPEC_PATH: ${{ inputs.spec_path }}

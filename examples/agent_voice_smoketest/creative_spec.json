@@ -1,0 +1,103 @@
+{
+  "project_id": "space-selected-voice-creative-test",
+  "source_url": "https://x.com/astro_anil/status/2117625618200219782",
+  "source_offset_seconds": 0,
+  "source_credit": "X / @astro_anil",
+  "location": "محطة الفضاء الدولية",
+  "date": "03.11.2026",
+  "headline_lines": [
+    "صوّتوا من الفضاء",
+    "ثلاثة رواد أمريكيين",
+    "كيف وصلت أصواتهم؟"
+  ],
+  "cards": [
+    {
+      "kicker": "الاقتراع",
+      "value": "إلكتروني وآمن",
+      "sub": "إلى مسؤولي الانتخابات على الأرض",
+      "start": 7.65,
+      "end": 11.0
+    },
+    {
+      "kicker": "الارتفاع",
+      "value": "≈ 400 كم",
+      "sub": "فوق الأرض",
+      "start": 11.0,
+      "end": 14.0
+    },
+    {
+      "kicker": "البداية",
+      "value": "منذ 1997",
+      "sub": "ناسا مكّنت روادها من التصويت",
+      "start": 14.05,
+      "end": 18.3
+    },
+    {
+      "kicker": "الخلاصة",
+      "value": "المشاركة حتى من الفضاء",
+      "sub": "تجربة مدنية خارج الكوكب",
+      "start": 18.3,
+      "end": 21.3
+    }
+  ],
+  "narration": [
+    {
+      "id": "a",
+      "text": "رواد الفضاء يصوّتون من المدار.",
+      "start": 0.55,
+      "max_seconds": 4.75,
+      "audio_file": "examples/agent_voice_smoketest/audio/a.mp3"
+    },
+    {
+      "id": "b",
+      "text": "يرسل الاقتراع إلكترونيًا إلى مسؤولي الانتخابات.",
+      "start": 7.65,
+      "max_seconds": 6.2,
+      "audio_file": "examples/agent_voice_smoketest/audio/b.mp3"
+    },
+    {
+      "id": "c",
+      "text": "تجربة تصل من محطة الفضاء إلى الأرض.",
+      "start": 14.05,
+      "max_seconds": 7.15,
+      "audio_file": "examples/agent_voice_smoketest/audio/c.mp3"
+    }
+  ],
+  "micro": [
+    {
+      "id": "micro_01",
+      "text": "من الفضاء!",
+      "start": 5.54,
+      "max_seconds": 1.95,
+      "anchor_word": "vote",
+      "anchor_end": 5.54,
+      "audio_file": "examples/agent_voice_smoketest/audio/micro_01.mp3"
+    },
+    {
+      "id": "micro_02",
+      "text": "تصويت استثنائي!",
+      "start": 21.5,
+      "max_seconds": 1.95,
+      "anchor_word": "today",
+      "anchor_end": 21.5,
+      "audio_file": "examples/agent_voice_smoketest/audio/micro_02.mp3"
+    }
+  ],
+  "tts": {
+    "provider": "pre_recorded"
+  },
+  "editorial_review": {
+    "facts_verified": true,
+    "source_permission_confirmed": false,
+    "notes": "مثال تاريخي؛ أكّد حقوق استخدام المصدر قبل النشر."
+  },
+  "transcript_file": "examples/space/transcript_words.json",
+  "creative": {
+    "mode": "context",
+    "angle": "كيف يصل اقتراع رواد الفضاء إلى مسؤولي الانتخابات على الأرض؟",
+    "reason": "تكوين الشرح يناسب سؤالًا عن طريقة وصول الصوت من المدار",
+    "hook_type": "question",
+    "crop": "auto",
+    "card_position": "auto"
+  }
+}

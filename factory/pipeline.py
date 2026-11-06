@@ -20,6 +20,9 @@ TRIM='silenceremove=start_periods=1:start_threshold=-45dB:start_silence=0.03,are
 sys.path.insert(0,str(ROOT/'factory'))
 import render_motion
 import brand_lock
+import creative_plan
+import framing
+import adaptive_motion
 
 VOICE_PROFILE=json.loads((ROOT/'assets/voice/voice_profile.json').read_text(encoding='utf-8'))
 VOICE_FILTER=VOICE_PROFILE['voice_processing_filter']
@@ -45,6 +48,7 @@ def load_spec(path):
     if not re.fullmatch(r'\d{2}\.\d{2}\.\d{4}',s['date']):fail('date must be DD.MM.YYYY')
     if s['tts']['provider'] not in ('pre_recorded','elevenlabs'):
         fail('tts.provider must be pre_recorded for agent-generated approved voice clips, or elevenlabs only with an approved same-identity voice')
+    creative_plan.validate(s)
     if not isinstance(s['editorial_review'].get('facts_verified'),bool) or not isinstance(s['editorial_review'].get('source_permission_confirmed'),bool):fail('Editorial review fields must be booleans')
     if not s['editorial_review']['facts_verified']:fail('Editorial facts must be verified before rendering')
     if not s['editorial_review']['source_permission_confirmed']:print('WARNING: source rights are NOT confirmed; output is a draft only',flush=True)
@@ -168,7 +172,8 @@ def generate_mix(s,source):
             # atempo's measured output is not always exactly input_length / tempo.
             # Re-measure and adjust slightly rather than clipping spoken words.
             for attempt in range(3):
-                if tempo>1.6:fail(f"{e['id']} needs {tempo:.2f}x speed; shorten text or expand its window")
+                max_tempo=1.6 if creative_plan.validate(s)['mode']=='golden' else 1.25
+                if tempo>max_tempo:fail(f"{e['id']} needs {tempo:.2f}x speed; shorten text or expand its window (maximum {max_tempo}x for this profile)")
                 fil=TRIM+f',atempo={tempo:.8f},'+VOICE_FILTER
                 if kind=='micro':fil+=',highpass=f=350,lowpass=f=3000'
                 x=norm(decode(path,1,fil),-5 if kind=='micro' else -3)
@@ -220,7 +225,7 @@ def generate_mix(s,source):
     return events,source_audio_status,fx
 
 
-def qa(s,video,events,source_audio_status,sfx_events):
+def qa(s,video,events,source_audio_status,sfx_events,plan,frame_analysis):
     run([FF,'-v','error','-i',video,'-f','null','-'])
     cap=cv2.VideoCapture(str(video));fps=cap.get(cv2.CAP_PROP_FPS);frames=int(cap.get(cv2.CAP_PROP_FRAME_COUNT));width=int(cap.get(cv2.CAP_PROP_FRAME_WIDTH));height=int(cap.get(cv2.CAP_PROP_FRAME_HEIGHT));cap.release()
     if (width,height,frames,round(fps,3))!=(1080,1920,840,30.0):fail('Output format mismatch')
@@ -240,7 +245,13 @@ def qa(s,video,events,source_audio_status,sfx_events):
     report['voice_id']=None # A prerecorded file does not reveal or prove the model or speaker identity.
     report['voice_processing_filter']=VOICE_FILTER
     report['voice_identity_caveat']='Pre-recorded clip identity is not automatically verified' if s['tts']['provider']=='pre_recorded' else 'Provider voice may change or become unavailable; review by ear'
+    report['brand_release']=json.loads((ROOT/'assets/brand/brand_manifest.json').read_text(encoding='utf-8')).get('release_id','legacy')
     report['speech_tempo_review']=[e['id'] for e in events if e['tempo']>1.25]
+    report['creative_plan']=plan
+    report['framing']=frame_analysis
+    report['automatic_checks'].extend(['creative plan validation','sampled face-aware framing warnings'])
+    report['not_automatic'].append('all-frame face, caption and logo occlusion detection')
+    (OUTPUT/'source_analysis.json').write_text(json.dumps(frame_analysis,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
     (OUTPUT/'qa_report.json').write_text(json.dumps(report,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
     shutil.copy2(local_path(s['transcript_file']),OUTPUT/'transcript_words.json')
     (OUTPUT/'used_spec.json').write_text(json.dumps(s,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
@@ -259,11 +270,17 @@ def main():
     for p in (WORK,OUTPUT):
         if p.exists():shutil.rmtree(p)
         p.mkdir(parents=True)
-    source=prepare_source(s,a.source);events,source_audio_status,sfx_events=generate_mix(s,source)
-    render_motion.picture(WORK,source,s)
+    plan=creative_plan.validate(s)
+    print('Creative layout:',plan['mode'],'selection:',plan['selection'],flush=True)
+    source=prepare_source(s,a.source)
+    frame_analysis=framing.analyze(source,s,plan)
+    print('Framing:',frame_analysis['crop_reason'],'cards:',frame_analysis['card_position'],flush=True)
+    for warning in frame_analysis['warnings']:print('FRAMING WARNING:',warning,flush=True)
+    events,source_audio_status,sfx_events=generate_mix(s,source)
+    adaptive_motion.picture(WORK,source,s,plan,frame_analysis)
     video=OUTPUT/(s['project_id']+'_Motion_V2.mp4')
     run([FF,'-y','-hide_banner','-loglevel','error','-i',WORK/'picture.mp4','-i',WORK/'mix_master.wav','-map','0:v:0','-map','1:a:0','-c:v','copy','-c:a','aac','-b:a','192k','-ar',str(SR),'-t',str(DURATION),'-movflags','+faststart',video])
-    qa(s,video,events,source_audio_status,sfx_events)
+    qa(s,video,events,source_audio_status,sfx_events,plan,frame_analysis)
     print('\nDELIVERABLE:',video,flush=True)
 
 if __name__=='__main__':
