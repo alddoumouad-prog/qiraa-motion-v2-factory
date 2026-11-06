@@ -14,6 +14,11 @@ class TestVoiceEngineering(unittest.TestCase):
         self.assertEqual(p['production_voice_id_status'],'arena_session_only')
         self.assertIn('acompressor=',pipeline.VOICE_FILTER)
         self.assertIn('highpass=f=80',pipeline.VOICE_FILTER)
+        self.assertEqual(p['mix_engineering']['sample_rate_hz'],48000)
+        self.assertEqual(p['mix_engineering']['micro_highpass_hz'],350)
+        self.assertEqual(p['mix_engineering']['micro_lowpass_hz'],3000)
+        self.assertTrue((ROOT/p['performance_bible']).is_file())
+        self.assertEqual(p['performance_guidance']['language'],'Arabic, Modern Standard Arabic')
     def test_previous_male_voice_cannot_be_silently_selected(self):
         spec=json.loads((ROOT/'spec.json').read_text());spec['tts']={'provider':'edge','fallback_voice':'ar-MA-JamalNeural'}
         with mock.patch.object(pipeline.Path,'read_text',return_value=json.dumps(spec)):

@@ -22,5 +22,31 @@
   "previous_arena_reference_audio": "assets/voice/approved_audition_reference.mp3",
   "voice_processing_filter": "highpass=f=80,equalizer=f=250:t=q:w=1:g=-1.5,equalizer=f=3000:t=q:w=1:g=1.2,acompressor=threshold=0.125:ratio=2:attack=12:release=120:makeup=1",
   "arena_session_voice_id": "voice-00",
-  "voice_id_portability": "The same ID is only valid within its registered Arena session; it must not be assumed identical or available in a new chat."
+  "voice_id_portability": "The same ID is only valid within its registered Arena session; it must not be assumed identical or available in a new chat.",
+  "performance_bible": "docs/دستور_الصوت_الاحترافي.md",
+  "performance_guidance": {
+    "language": "Arabic, Modern Standard Arabic",
+    "speaker": "Previously selected original feminine voice only when identity and access are confirmed",
+    "tone": "warm, composed, confident, close, documentary-news; not advertising or theatrical",
+    "delivery": "natural concise phrasing, short pauses, clear diction, gentle key-word emphasis",
+    "main_commentary": "calm and focused",
+    "micro_commentary": "same speaker, brief and slightly lively; telephone-band filtering is applied by the mixer",
+    "do_not_add_to_dry_clips": [
+      "music",
+      "sound effects",
+      "reverb",
+      "crowd"
+    ],
+    "identity_requirement": "No silent substitution; Arena session voice identifiers do not guarantee portability"
+  },
+  "mix_engineering": {
+    "sample_rate_hz": 48000,
+    "narration_peak_dbfs_before_mix": -3,
+    "micro_peak_dbfs_before_mix": -5,
+    "micro_highpass_hz": 350,
+    "micro_lowpass_hz": 3000,
+    "master_loudness_target_lufs": -14,
+    "master_true_peak_target_dbtp": -1.5,
+    "master_targets_note": "Targets, not guarantees after codec or for every source; listen and measure the output."
+  }
 }
